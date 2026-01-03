@@ -16,6 +16,16 @@
     />
     <meta property="og:image" content="/images/churn.png" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Performance: preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Theme / PWA metadata -->
+    <meta name="theme-color" content="#2545a8">
+    <meta name="color-scheme" content="light dark">
+    <link rel="manifest" href="/site.webmanifest">
+
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
@@ -23,6 +33,12 @@
     />
   </head>
   <body class="font-sans">
+    <noscript>
+      <div style="padding:1rem;background:#fee; color:#422; text-align:center;">
+        This site requires JavaScript to run properly. Please enable JavaScript in your browser.
+      </div>
+    </noscript>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

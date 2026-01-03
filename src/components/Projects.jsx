@@ -5,23 +5,39 @@ export default function Projects() {
       desc: 'Telecom churn modeling with feature engineering and XGBoost ensemble.',
       tags: ['Python', 'XGBoost', 'Feature Engineering'],
       link: 'https://www.kaggle.com/code/zorornoa/churn-analysis',
-      image: '/images/churn.png',
+      image: 'public/__results___7_0.png',
     },
     {
-      title: 'Walmart Store Sales Forecasting',
-      desc: 'Time-series forecasting with holiday & weather features to improve store-level predictions.',
-      tags: ['Time Series', 'Forecasting', 'Pandas'],
-      link: 'https://www.kaggle.com/code/zorornoa/walmart-store-sales-forcasting',
-      image: '/images/walmart.png',
+      title: 'Winter_Food_ analysis',
+      desc: 'Exploratory data analysis of winter food sales using Pandas and Seaborn.',
+      tags: ['EDA', 'Seaborn', 'Pandas'],
+      link: 'https://www.kaggle.com/code/zorornoa/winter-food-analysis',
+      image: 'public/__results___13_0.png',
     },
     {
       title: 'Mental Health Analysis App',
       desc: 'Analysis and visualization of mental health survey data with interactive dashboard.',
       tags: ['Flask', 'Pandas', 'Visualization'],
       link: 'https://github.com/sHoYo057/Mental_health',
-      image: '/images/mental.png',
+      image: 'public/images/Yellow and Orange Minimalist Maketing Report Graph.png',
     },
+    {
+      title: 'Premier League Data Analysis',
+      desc: 'Exploratory data analysis of Premier League stats using Pandas and Matplotlib.',
+      tags: ['EDA', 'Matplotlib', 'Pandas'],
+      link: 'https://www.kaggle.com/code/zorornoa/premier-league-analysis',
+      image: 'public/images/__results___9_0.png',
+    }
   ]
+
+  function handleImgError(e) {
+    e.currentTarget.onerror = null
+    e.currentTarget.src =
+      "data:image/svg+xml;utf8," +
+      encodeURIComponent(
+        `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='675' viewBox='0 0 1200 675'><rect width='100%' height='100%' fill='%23e5e7eb'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23737482' font-family='Inter, Arial, sans-serif' font-size='28'>Image unavailable</text></svg>`
+      )
+  }
 
   return (
     <section id="projects" className="py-16">
@@ -31,37 +47,42 @@ export default function Projects() {
           {projects.map((p) => (
             <article
               key={p.title}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden group relative"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden group relative focus-within:ring-2 focus-within:ring-blue-400"
             >
-              <img
-                src={p.image}
-                alt={p.title}
-                className="w-full h-56 object-cover group-hover:opacity-80 transition"
-              />
-              <div className="p-4">
-                <h3 className="font-semibold text-lg mb-2">{p.title}</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                  {p.desc}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {p.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded"
-                    >
-                      {t}
-                    </span>
-                  ))}
+              <a
+                href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${p.title} in a new tab`}
+                className="block"
+              >
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  loading="lazy"
+                  onError={handleImgError}
+                  className="w-full h-56 object-cover group-hover:opacity-80 transition"
+                />
+                <div className="p-4">
+                  <h3 className="font-semibold text-lg mb-2">{p.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                    {p.desc}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {p.tags.map((t, i) => (
+                      <span
+                        key={t + i}
+                        className="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="inline-block bg-brand text-white px-3 py-1 rounded focus:outline-none focus:ring-2">
+                    View Project →
+                  </span>
                 </div>
-                <a
-                  href={p.link}
-                  target="_blank"
-                  rel="noopener"
-                  className="inline-block bg-brand text-white px-3 py-1 rounded"
-                >
-                  View Project →
-                </a>
-              </div>
+              </a>
             </article>
           ))}
         </div>

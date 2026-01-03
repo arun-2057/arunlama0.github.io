@@ -2,13 +2,27 @@
   "name": "arun-portfolio-3proj",
   "version": "1.0.0",
   "private": true,
+  "description": "Portfolio site for Arun Lama — Data Analyst",
+  "homepage": "https://arun-2057.github.io/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arun-2057/arun-portfolio-3proj.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arun-2057/arun-portfolio-3proj/issues"
+  },
+  "author": "Arun Lama <lamaarun2001@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
     "dev": "vite",
+    "start": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "homepage": "https://sHoYo057.github.io/"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.2.0",
