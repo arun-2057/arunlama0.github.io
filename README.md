@@ -39,7 +39,7 @@ It showcases my projects, skills, and resume — designed to be recruiter-friend
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/arunlama/portfolio.git
+    git clone https://github.com/arun-2057/arunlama0.github.io
     cd portfolio
     ```
 
