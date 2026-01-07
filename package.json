@@ -22,7 +22,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "build:docs": "vite build && rm -rf docs/assets docs/images docs/index.html docs/og-image.png docs/profile.jpg && cp -r dist/* docs/",
+    "build:deploy": "npm run build:docs && git add docs && git commit -m \"Deploy: update docs from dist\" || true"
   },
   "dependencies": {
     "react": "^18.2.0",
