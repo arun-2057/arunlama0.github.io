@@ -1,0 +1,39 @@
+name: Build and update docs
+
+on:
+  push:
+    branches: [ main ]
+    # Ignore docs changes so commits that only update docs don't retrigger this workflow
+    paths-ignore:
+      - 'docs/**'
+
+jobs:
+  build-and-update-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and copy to docs
+        run: npm run build:docs
+
+      - name: Commit docs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git commit -m "chore: update docs from build [skip ci]" || echo "no changes to commit"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
