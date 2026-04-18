@@ -2,78 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Modern Color Theme - Indigo/Violet/Cyan Gradient */
+/* Swiss Minimalism Theme - Off-white with Electric Accent */
 :root {
-  /* Primary gradient colors */
-  --brand: #6366f1;           /* Indigo-500 */
-  --brand-light: #818cf8;     /* Indigo-400 */
-  --brand-dark: #4f46e5;      /* Indigo-600 */
+  /* Primary brand - Electric Indigo */
+  --brand: #4F46E5;           /* Indigo-600 - bold & electric */
+  --brand-light: #6366F1;     /* Indigo-500 */
+  --brand-dark: #3730A3;      /* Indigo-800 */
+  --brand-neon: #7C3AED;      /* Violet-500 for accents */
   
-  /* Secondary accent - Teal */
-  --accent: #14b8a6;          /* Teal-500 */
-  --accent-light: #2dd4bf;    /* Teal-400 */
-  --accent-dark: #0d9488;     /* Teal-600 */
+  /* Secondary accent - Cyan */
+  --accent: #06B6D4;          /* Cyan-500 */
+  --accent-light: #22D3EE;    /* Cyan-400 */
+  --accent-dark: #0891B2;     /* Cyan-600 */
   
-  /* Gradient colors */
-  --gradient-from: #6366f1;   /* Indigo */
-  --gradient-via: #8b5cf6;    /* Violet */
-  --gradient-to: #06b6d4;     /* Cyan */
+  /* Swiss minimalism neutrals */
+  --off-white: #F4F4F0;       /* Warm off-white background */
+  --charcoal: #121212;        /* Deep charcoal for dark mode */
+  --slate-dark: #1A1A1A;      /* Slightly lighter charcoal */
+  --pure-white: #FFFFFF;
+  --pure-black: #000000;
   
-  /* Neutral colors */
-  --muted: #64748b;           /* Slate-500 */
-  --bg-light: #f8fafc;        /* Slate-50 */
-  --bg-dark: #0f172a;         /* Slate-900 */
-  --card-light: #ffffff;
-  --card-dark: #1e293b;       /* Slate-800 */
-  --text-primary-light: #1e293b;
-  --text-primary-dark: #f1f5f9;
-  --text-secondary-light: #475569;
-  --text-secondary-dark: #94a3b8;
+  /* Text colors */
+  --text-primary-light: #121212;
+  --text-secondary-light: #525252;
+  --text-primary-dark: #F4F4F0;
+  --text-secondary-dark: #A3A3A3;
+  
+  /* Grid & spacing */
+  --grid-unit: 8px;
+  --max-width: 1440px;
 }
 
 /* Smooth scrolling */
 html { scroll-behavior: smooth; }
 
-/* Base styles with modern colors */
+/* Base styles - Swiss minimalism */
 body { 
   @apply antialiased;
-  background: linear-gradient(135deg, var(--bg-light) 0%, #f0f9ff 100%);
+  background-color: var(--off-white);
   color: var(--text-primary-light);
+  font-feature-settings: "kern" 1, "liga" 0;
+  text-rendering: optimizeLegibility;
 }
 
 .dark body { 
-  background: linear-gradient(135deg, var(--bg-dark) 0%, #1e1b4b 100%);
+  background-color: var(--charcoal);
   color: var(--text-primary-dark);
 }
 
-/* Brand utilities with gradient support */
+/* Brand utilities - solid colors, no gradients */
 .text-brand { 
   color: var(--brand);
-  background: linear-gradient(135deg, var(--gradient-from), var(--gradient-to));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .bg-brand { 
-  background: linear-gradient(135deg, var(--gradient-from), var(--gradient-via), var(--gradient-to));
+  background-color: var(--brand);
 }
 
 .border-brand { 
   border-color: var(--brand);
 }
 
-/* Gradient text utility */
-.gradient-text {
-  background: linear-gradient(135deg, var(--gradient-from), var(--gradient-via), var(--gradient-to));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Electric accent for hover states */
+.text-accent { 
+  color: var(--accent);
 }
 
-/* Gradient background utility */
+.bg-accent { 
+  background-color: var(--accent);
+}
+
+/* Bold typographic emphasis */
+.gradient-text {
+  color: var(--brand);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Solid backgrounds only - Swiss style */
 .gradient-bg {
-  background: linear-gradient(135deg, var(--gradient-from), var(--gradient-via), var(--gradient-to));
+  background-color: var(--brand);
 }
 
 /* Screen-reader helpers */
@@ -98,95 +106,143 @@ body {
   white-space: normal !important;
 }
 
-/* Small transition helper for interactive brand elements */
+/* Micro-interaction transitions */
 .transition-brand {
-  transition: background-color 150ms ease, color 150ms ease, transform 120ms ease, box-shadow 150ms ease;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Enhanced Card animation */
+/* Swiss-style entrance animation */
 .card-anim { 
-  transform: translateY(12px); 
+  transform: translateY(20px); 
   opacity: 0; 
-  animation: fadeUp 600ms cubic-bezier(0.4, 0, 0.2, 1) forwards; 
+  animation: swissFadeUp 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards; 
 }
 
-@keyframes fadeUp { 
+@keyframes swissFadeUp { 
   to { 
     transform: translateY(0); 
     opacity: 1; 
   } 
 }
 
-/* Glass morphism effect */
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.dark .glass {
-  background: rgba(30, 41, 59, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Hover lift effect */
-.hover-lift {
+/* Sharp geometric cards - no glassmorphism */
+.swiss-card {
+  background: var(--pure-white);
+  border: 2px solid var(--pure-black);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--pure-black);
   transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
-.hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.2), 0 4px 6px -2px rgba(99, 102, 241, 0.1);
+.dark .swiss-card {
+  background: var(--slate-dark);
+  border: 2px solid var(--pure-white);
+  box-shadow: 4px 4px 0 var(--pure-white);
 }
 
-/* Glow effect for buttons */
+.swiss-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--brand);
+}
+
+/* Minimal hover lift */
+.hover-lift {
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+}
+
+/* Bold button with micro-interaction */
 .glow-on-hover {
   position: relative;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.glow-on-hover::before {
+.glow-on-hover:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(79, 70, 229, 0.3);
+}
+
+.glow-on-hover::after {
   content: '';
   position: absolute;
-  inset: -2px;
-  background: linear-gradient(135deg, var(--gradient-from), var(--gradient-via), var(--gradient-to));
+  inset: 0;
   border-radius: inherit;
-  z-index: -1;
+  background: var(--accent);
   opacity: 0;
   transition: opacity 200ms ease;
-  filter: blur(8px);
+  mix-blend-mode: overlay;
 }
 
-.glow-on-hover:hover::before {
-  opacity: 0.6;
+.glow-on-hover:hover::after {
+  opacity: 0.15;
 }
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .card-anim { animation: none; transform: none; opacity: 1; transition: none !important; }
   .hover-lift:hover { transform: none; }
-  .glow-on-hover::before { display: none; }
+  .glow-on-hover:hover { transform: none; }
+  .glow-on-hover::after { display: none; }
 }
 
-/* Custom scrollbar */
+/* Custom minimal scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-light);
+  background: var(--off-white);
+  border-left: 1px solid rgba(0,0,0,0.1);
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: var(--bg-dark);
+  background: var(--charcoal);
+  border-left: 1px solid rgba(255,255,255,0.1);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, var(--gradient-from), var(--gradient-to));
-  border-radius: 4px;
+  background: var(--brand);
+  border: 2px solid var(--off-white);
+  border-radius: 0;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  border: 2px solid var(--charcoal);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--brand-dark);
+}
+
+/* Grid system utilities for Swiss layout */
+.grid-swiss {
+  display: grid;
+  gap: calc(var(--grid-unit) * 3);
+}
+
+@media (min-width: 768px) {
+  .grid-swiss {
+    gap: calc(var(--grid-unit) * 4);
+  }
+}
+
+/* Typography scale - bold & clean */
+.text-display {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.text-headline {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
