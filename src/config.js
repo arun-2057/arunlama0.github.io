@@ -94,12 +94,17 @@ export const config = {
   // Form Settings
   form: {
     name: 'contact',
-    honeypotField: 'bot-field',
+    honeypotField: 'website_url', // Less obvious name for honeypot
     maxMessageLength: 1000,
     minMessageLength: 10,
     rateLimitWindow: 60000, // 1 minute in ms
     maxSubmissionsPerWindow: 3,
   },
+  
+  // Heading and description for About section
+  heading: 'About Me',
+  description: "I'm a data analyst with a strong foundation in analytics, statistical modeling, and machine learning. I transform raw datasets into actionable business insights via ETL workflows, predictive modeling, and clear visualizations. My experience spans retail and telecom analytics — I focus on solving business problems with data-driven strategies.",
+  cta: { label: 'Get in Touch', href: '#contact' },
 };
 
 // Color Theme Configuration

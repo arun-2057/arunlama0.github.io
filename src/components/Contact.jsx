@@ -1,23 +1,24 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { MdEmail } from 'react-icons/md'
 import { FaGithub } from 'react-icons/fa'
 import { SiKaggle } from 'react-icons/si'
 import { FaLinkedin } from 'react-icons/fa'
 import { config } from '../config'
 
-// Input sanitization helper
+// Input sanitization helper - more comprehensive
 function sanitizeInput(str) {
   if (typeof str !== 'string') return '';
-  return str.replace(/[<>]/g, '').trim();
+  // Remove HTML tags, script injections, and trim
+  return str.replace(/[<>\"'&]/g, '').replace(/javascript:/gi, '').trim();
 }
 
-// Email validation
+// Email validation with stricter regex
 function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  return emailRegex.test(email) && email.length <= 254;
 }
 
-// Rate limiting helper
+// Rate limiting helper with per-session tracking
 const submissionTracker = {
   timestamps: [],
   canSubmit(windowMs, maxSubmissions) {
@@ -28,8 +29,16 @@ const submissionTracker = {
     }
     this.timestamps.push(now);
     return true;
+  },
+  reset() {
+    this.timestamps = [];
   }
 };
+
+// Generate CSRF token (client-side simulation)
+function generateCSRFToken() {
+  return btoa(`${Date.now()}-${Math.random().toString(36).substring(2)}`);
+}
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
@@ -37,28 +46,39 @@ export default function Contact() {
   const [error, setError] = useState(null)
   const [copied, setCopied] = useState('')
   const [formErrors, setFormErrors] = useState({})
+  const [csrfToken, setCsrfToken] = useState('')
   const formRef = useRef(null)
   
-  // Validate form inputs
+  // Initialize CSRF token on mount
+  useEffect(() => {
+    setCsrfToken(generateCSRFToken());
+  }, []);
+  
+  // Validate form inputs with detailed error messages
   function validateForm(formData) {
     const errors = {};
     const name = sanitizeInput(formData.get('name'));
     const email = sanitizeInput(formData.get('email'));
     const message = sanitizeInput(formData.get('message'));
     
+    // Name validation
     if (!name || name.length < 2) {
-      errors.name = 'Name must be at least 2 characters';
+      errors.name = 'Name must be at least 2 characters long';
+    } else if (name.length > 50) {
+      errors.name = 'Name must be less than 50 characters';
     }
     
-    if (!email || !isValidEmail(email)) {
-      errors.email = 'Please enter a valid email address';
+    // Email validation
+    if (!email) {
+      errors.email = 'Email address is required';
+    } else if (!isValidEmail(email)) {
+      errors.email = 'Please enter a valid email address (e.g., name@example.com)';
     }
     
+    // Message validation
     if (!message || message.length < config.form.minMessageLength) {
       errors.message = `Message must be at least ${config.form.minMessageLength} characters`;
-    }
-    
-    if (message.length > config.form.maxMessageLength) {
+    } else if (message.length > config.form.maxMessageLength) {
       errors.message = `Message must be less than ${config.form.maxMessageLength} characters`;
     }
     
@@ -72,6 +92,21 @@ export default function Contact() {
     
     const form = e.target
     const formData = new FormData(form)
+    
+    // Check for honeypot field (bot detection)
+    const honeypotValue = formData.get(config.form.honeypotField);
+    if (honeypotValue) {
+      // Silently fail for bots
+      console.log('Bot detected');
+      return;
+    }
+    
+    // Verify CSRF token
+    const token = formData.get('csrf_token');
+    if (!token || token !== csrfToken) {
+      setError('Security validation failed. Please refresh the page and try again.');
+      return;
+    }
     
     // Check rate limiting
     if (!submissionTracker.canSubmit(config.form.rateLimitWindow, config.form.maxSubmissionsPerWindow)) {
@@ -97,9 +132,11 @@ export default function Contact() {
       })
       setSubmitted(true)
       form.reset()
-      submissionTracker.timestamps = [] // Reset rate limit on success
+      submissionTracker.reset() // Reset rate limit on success
+      // Generate new CSRF token after successful submission
+      setCsrfToken(generateCSRFToken());
     } catch (err) {
-      setError('Something went wrong. Please try again or email directly.')
+      setError('Something went wrong. Please try again or email directly at lamaarun2001@gmail.com')
     } finally {
       setSubmitting(false)
     }
@@ -112,7 +149,7 @@ export default function Contact() {
       setError(null)
       setTimeout(() => setCopied(''), 2000)
     } catch (err) {
-      setError('Unable to copy to clipboard')
+      setError('Unable to copy to clipboard. Please manually copy the email address.')
     }
   }
 
@@ -238,10 +275,19 @@ export default function Contact() {
               className="flex flex-col gap-4 bg-white dark:bg-gray-700 p-6 md:p-8 rounded-xl border border-gray-100 dark:border-gray-600 shadow-lg"
             >
               <input type="hidden" name="form-name" value="contact" />
-              {/* Improved honeypot field - hidden but not display:none */}
-              <label className="absolute opacity-0 -z-10 w-0 h-0 overflow-hidden" aria-hidden="true">
-                Don't fill this out if you're human: <input name={config.form.honeypotField} tabIndex="-1" autoComplete="off" />
-              </label>
+              <input type="hidden" name="csrf_token" value={csrfToken} />
+              {/* Improved honeypot field - visually hidden but accessible */}
+              <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+                <label>
+                  Leave this field empty if you're human: 
+                  <input 
+                    name={config.form.honeypotField} 
+                    tabIndex="-1" 
+                    autoComplete="off"
+                    type="text"
+                  />
+                </label>
+              </div>
 
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">Your name</label>
