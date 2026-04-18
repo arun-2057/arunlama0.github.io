@@ -1,34 +1,7 @@
+import { config } from '../config';
+
 export default function Projects() {
-  const projects = [
-    {
-      title: 'Customer Churn Prediction',
-      desc: 'Telecom churn modeling with feature engineering and XGBoost ensemble.',
-      tags: ['Python', 'XGBoost', 'Feature Engineering'],
-      link: 'https://www.kaggle.com/code/zorornoa/churn-analysis',
-      image: '/images/7_optimized.jpg',
-    },
-    {
-      title: 'Winter_Food_ analysis',
-      desc: 'Exploratory data analysis of winter food sales using Pandas and Seaborn.',
-      tags: ['EDA', 'Seaborn', 'Pandas'],
-      link: 'https://www.kaggle.com/code/zorornoa/winter-food-analysis',
-      image: '/images/13_optimized.jpg',
-    },
-    {
-      title: 'Mental Health Analysis App',
-      desc: 'Analysis and visualization of mental health survey data with interactive dashboard.',
-      tags: ['Flask', 'Pandas', 'Visualization'],
-      link: 'https://github.com/sHoYo057/Mental_health',
-      image: '/images/yellow-orange-report_optimized.jpg',
-    },
-    {
-      title: 'Premier League Data Analysis',
-      desc: 'Exploratory data analysis of Premier League stats using Pandas and Matplotlib.',
-      tags: ['EDA', 'Matplotlib', 'Pandas'],
-      link: 'https://www.kaggle.com/code/zorornoa/premier-league-analysis',
-      image: '/images/9_optimized.jpg',
-    }
-  ]
+  const projects = config.projects;
 
   function handleImgError(e) {
     e.currentTarget.onerror = null
@@ -40,14 +13,14 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="py-16">
+    <section id="projects" className="py-16 bg-white dark:bg-gray-800">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-6">Projects</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-10 gradient-text">Projects</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((p) => (
             <article
               key={p.title}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden group relative focus-within:ring-2 focus-within:ring-blue-400"
+              className="bg-white dark:bg-gray-700 rounded-xl shadow-soft overflow-hidden group relative focus-within:ring-2 focus-within:ring-brand hover:shadow-medium transition-all hover-lift border border-gray-100 dark:border-gray-600"
             >
               <a
                 href={p.link}
@@ -56,41 +29,45 @@ export default function Projects() {
                 aria-label={`Open ${p.title} in a new tab`}
                 className="block"
               >
-                <picture>
-                  <source
-                    type="image/webp"
-                    srcSet={`${p.image.replace('.jpg', '-800.webp')} 800w, ${p.image.replace('.jpg', '-400.webp')} 400w`}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <img
-                    src={p.image}
-                    srcSet={`${p.image} 800w, ${p.image.replace('.jpg', '-400.jpg')} 400w`}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    alt={p.title}
-                    loading="lazy"
-                    width="800"
-                    height="600"
-                    onError={handleImgError}
-                    className="w-full h-56 object-cover group-hover:opacity-80 transition"
-                  />
-                </picture>
-                <div className="p-4">
-                  <h3 className="font-semibold text-lg mb-2">{p.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                <div className="relative overflow-hidden">
+                  <picture>
+                    <source
+                      type="image/webp"
+                      srcSet={`${p.image.replace('.jpg', '-800.webp')} 800w, ${p.image.replace('.jpg', '-400.webp')} 400w`}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <img
+                      src={p.image}
+                      srcSet={`${p.image} 800w, ${p.image.replace('.jpg', '-400.jpg')} 400w`}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      alt={p.title}
+                      loading="lazy"
+                      width="800"
+                      height="600"
+                      onError={handleImgError}
+                      className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </picture>
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-bold text-xl mb-2 text-gray-800 dark:text-gray-200 group-hover:text-brand transition-colors">{p.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
                     {p.desc}
                   </p>
-                  <div className="flex flex-wrap gap-2 mb-3">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {p.tags.map((t, i) => (
                       <span
                         key={t + i}
-                        className="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded"
+                        className="text-xs bg-gradient-to-r from-indigo-50 to-cyan-50 dark:from-indigo-900/30 dark:to-cyan-900/30 px-3 py-1.5 rounded-full font-medium text-gray-700 dark:text-gray-300 border border-indigo-100 dark:border-indigo-800"
                       >
                         {t}
                       </span>
                     ))}
                   </div>
-                  <span className="inline-block bg-brand text-white px-3 py-1 rounded focus:outline-none focus:ring-2">
-                    View Project →
+                  <span className="inline-flex items-center gap-2 bg-brand text-white px-4 py-2 rounded-lg font-semibold text-sm glow-on-hover">
+                    View Project <span className="transform group-hover:translate-x-1 transition-transform">→</span>
                   </span>
                 </div>
               </a>
