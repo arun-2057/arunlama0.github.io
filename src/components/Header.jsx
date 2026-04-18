@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { config } from '../config'
+import { FaSun, FaMoon } from 'react-icons/fa'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -56,10 +57,14 @@ export default function Header() {
             onClick={() => setIsDark((s) => !s)}
             aria-pressed={isDark}
             aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-            className="p-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 text-xl transition-colors"
+            className="p-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center justify-center"
             title={isDark ? 'Switch to light' : 'Switch to dark'}
           >
-            {isDark ? '🌙' : '☀️'}
+            {isDark ? (
+              <FaMoon className="text-xl" aria-hidden="true" />
+            ) : (
+              <FaSun className="text-xl" aria-hidden="true" />
+            )}
           </button>
 
           {/* Mobile menu button */}
