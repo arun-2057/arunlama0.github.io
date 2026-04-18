@@ -13,20 +13,22 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="py-16 bg-white dark:bg-gray-800">
+    <section id="projects" className="py-16 bg-white dark:bg-gray-800" role="region" aria-labelledby="projects-heading">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-10 gradient-text">Projects</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((p) => (
+        <h2 id="projects-heading" className="text-3xl md:text-4xl font-bold mb-10 gradient-text">Projects</h2>
+        <div className="grid md:grid-cols-2 gap-6" role="list">
+          {projects.map((p, index) => (
             <article
               key={p.title}
+              role="listitem"
+              aria-label={`Project: ${p.title}. ${p.desc}`}
               className="bg-white dark:bg-gray-700 rounded-xl shadow-soft overflow-hidden group relative focus-within:ring-2 focus-within:ring-brand hover:shadow-medium transition-all hover-lift border border-gray-100 dark:border-gray-600"
             >
               <a
                 href={p.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Open ${p.title} in a new tab`}
+                aria-label={`Open project ${p.title} - ${p.desc} in a new tab`}
                 className="block"
               >
                 <div className="relative overflow-hidden">
@@ -40,7 +42,7 @@ export default function Projects() {
                       src={p.image}
                       srcSet={`${p.image} 800w, ${p.image.replace('.jpg', '-400.jpg')} 400w`}
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      alt={p.title}
+                      alt={`${p.title} project screenshot showing ${p.tags.join(', ')}`}
                       loading="lazy"
                       width="800"
                       height="600"
@@ -56,7 +58,7 @@ export default function Projects() {
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
                     {p.desc}
                   </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-4" aria-label={`Technologies used in ${p.title}`}>
                     {p.tags.map((t, i) => (
                       <span
                         key={t + i}
@@ -67,7 +69,7 @@ export default function Projects() {
                     ))}
                   </div>
                   <span className="inline-flex items-center gap-2 bg-brand text-white px-4 py-2 rounded-lg font-semibold text-sm glow-on-hover">
-                    View Project <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    View Project <span className="transform group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
                   </span>
                 </div>
               </a>
