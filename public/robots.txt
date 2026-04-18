@@ -1,0 +1,6 @@
+# Portfolio Robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap (add when available)
+# Sitemap: https://arunlama0.com.np/sitemap.xml
