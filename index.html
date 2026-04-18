@@ -2,45 +2,136 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    
+    <!-- Security Headers (via meta tags for static hosting) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    
+    <!-- Favicons -->
     <link rel="icon" href="/og.png" type="image/png" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/og.png" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arun Lama — Data Analyst</title>
     <meta
       name="description"
       content="Arun Lama — Data Analyst. Portfolio showcasing projects, skills, and resume."
     />
+    <meta name="author" content="Arun Lama" />
+    <meta name="keywords" content="data analyst, portfolio, data visualization, analytics, business intelligence, SQL, Python, Tableau, Power BI" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://arunlama.com/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://arunlama.com/" />
     <meta property="og:title" content="Arun Lama — Data Analyst" />
     <meta
       property="og:description"
       content="Data analyst portfolio: projects, skills, and contact."
     />
     <meta property="og:image" content="/images/7_optimized.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Arun Lama — Data Analyst" />
+    <meta name="twitter:description" content="Data analyst portfolio: projects, skills, and contact." />
+    <meta name="twitter:image" content="/images/7_optimized.jpg" />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Arun Lama",
+      "jobTitle": "Data Analyst",
+      "url": "https://arunlama.com",
+      "image": "/profile.jpg",
+      "sameAs": [
+        "https://linkedin.com/in/arunlama",
+        "https://github.com/arunlama"
+      ],
+      "knowsAbout": ["Data Analysis", "SQL", "Python", "Tableau", "Power BI", "Data Visualization", "Business Intelligence"],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Available for opportunities"
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Arun Lama Portfolio",
+      "url": "https://arunlama.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://arunlama.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 
-    <!-- Performance: preconnect for Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Performance: Resource hints -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Module preload for critical JS -->
+    <link rel="modulepreload" href="/assets/index-29c505e0.js">
 
     <!-- Theme / PWA metadata -->
     <meta name="theme-color" content="#2545a8">
     <meta name="color-scheme" content="light dark">
     <link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiQXJ1biBMYW1hIiwic2hvcnRfbmFtZSI6IkFydW5MYW1hIiwic3RhcnRfdXJsIjoiLyIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwiYmFja2dyb3VuZF9jb2xvciI6IiNmZmZmZmYiLCJ0aGVtZV9jb2xvciI6IiMwZWE1YTQiLCJpY29ucyI6W3sic3JjIjoiL2ltYWdlcy85X29wdGltaXplZC5qcGciLCJzaXplcyI6IjE5MngxOTIiLCJ0eXBlIjoiaW1hZ2UvanBlZyJ9LHsic3JjIjoiL2ltYWdlcy8xM19vcHRpbWl6ZWQuanBnIiwic2l6ZXMiOiI1MTJ4NTEyIiwidHlwZSI6ImltYWdlL2pwZWcifSx7InNyYyI6Ii9pbWFnZXMvN19vcHRpbWl6ZWQuanBnIiwic2l6ZXMiOiI1MTJ4NTEyIiwidHlwZSI6ImltYWdlL2pwZWcifV19">
 
+    <!-- Critical CSS (inline for faster rendering) -->
+    <style>
+      /* Critical above-the-fold styles */
+      :root{--brand-primary:#4F46E5;--brand-secondary:#7C3AED;--brand-accent:#06B6D4;--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--text-primary:#0F172A;--text-secondary:#475569}
+      html{scroll-behavior:smooth}
+      body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background-color:var(--gray-100);color:var(--text-primary)}
+      .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+      #root{min-height:100vh}
+      @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    </style>
 
-    <!-- Google Fonts -->
+    <!-- Modern Design Stylesheet -->
+    <link rel="stylesheet" href="/assets/modern-design.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/assets/modern-design.css"></noscript>
+
+    <!-- Google Fonts with font-display: swap -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     
+    <!-- Main stylesheet (legacy - can be removed after React components are updated) -->
+    <link rel="stylesheet" href="/assets/index-74869136.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/assets/index-74869136.css"></noscript>
     
-    <script type="module" crossorigin src="/assets/index-29c505e0.js"></script>
-    <link rel="stylesheet" href="/assets/index-74869136.css">
+    <!-- Print styles -->
+    <link rel="stylesheet" href="/assets/modern-design.css" media="print">
   </head>
   <body class="font-sans">
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-3 focus:py-2 focus:bg-white focus:rounded focus:shadow-lg">
+      Skip to main content
+    </a>
+    
     <noscript>
       <div style="padding:1rem;background:#fee; color:#422; text-align:center;">
         This site requires JavaScript to run properly. Please enable JavaScript in your browser.
@@ -48,6 +139,19 @@
     </noscript>
 
     <div id="root"></div>
+    <main id="main-content" tabindex="-1"></main>
     
+    <!-- Error Boundary Script -->
+    <script>
+      window.addEventListener('error', function(e) {
+        console.error('Global error caught:', e.error);
+        // Log to monitoring service if available
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('Unhandled promise rejection:', e.reason);
+      });
+    </script>
+    
+    <script type="module" crossorigin src="/assets/index-29c505e0.js"></script>
   </body>
 </html>
