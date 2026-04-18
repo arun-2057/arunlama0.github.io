@@ -227,7 +227,7 @@ copies or substantial portions of the Software.
 
 <div align="center">
 
-**Made with ❤️ by Arun Lama**
+**Made by Arun Lama**
 
 [⬆ Back to Top](#arun-lama--portfolio-website)
 
