@@ -1,7 +1,11 @@
-import profile from '/profile.jpg';
 import { config } from '../config';
 
 export default function Hero() {
+  const profileSrc = '/profile.jpg';
+  const profile400 = '/profile_optimized-400.jpg';
+  const profile200 = '/profile_optimized-200.jpg';
+  const profileWebp400 = '/profile_optimized-400.webp';
+  const profileWebp200 = '/profile_optimized-200.webp';
   return (
     <section id="hero" aria-labelledby="hero-heading" className="pt-32 md:pt-40 pb-16 bg-offWhite dark:bg-charcoal">
       <div className="max-w-max mx-auto px-4 grid lg:grid-cols-12 gap-12 items-center">
@@ -47,10 +51,10 @@ export default function Hero() {
             <div className="absolute -inset-4 border-4 border-brand rounded-none shadow-swiss"></div>
             <div className="relative w-64 h-64 md:w-80 md:h-80 overflow-hidden border-4 border-gray-900 dark:border-white rounded-none transform group-hover:translate-x-1 group-hover:translate-y-1 transition duration-300">
               <picture>
-                <source type="image/webp" srcSet={`${profile.replace('.jpg','-400.webp')} 400w, ${profile.replace('.jpg','-200.webp')} 200w`} sizes="(max-width: 768px) 50vw, 200px" />
+                <source type="image/webp" srcSet={`${profileWebp200} 200w, ${profileWebp400} 400w`} sizes="(max-width: 768px) 50vw, 200px" />
                 <img
-                  src={profile}
-                  srcSet={`${profile.replace('.jpg','-400.jpg')} 400w, ${profile.replace('.jpg','-200.jpg')} 200w`}
+                  src={profileSrc}
+                  srcSet={`${profile200} 200w, ${profile400} 400w`}
                   sizes="(max-width: 768px) 50vw, 200px"
                   alt="Headshot of Arun Lama"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"

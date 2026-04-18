@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { config } from '../config'
-import { FaSun, FaMoon } from 'react-icons/fa'
+import { FaSun } from 'react-icons/fa'
+import moonIcon from '/moon-icon.png'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -61,7 +62,7 @@ export default function Header() {
             title={isDark ? 'Switch to light' : 'Switch to dark'}
           >
             {isDark ? (
-              <FaMoon className="text-xl" aria-hidden="true" />
+              <img src={moonIcon} alt="Moon icon" className="w-5 h-5" aria-hidden="true" />
             ) : (
               <FaSun className="text-xl" aria-hidden="true" />
             )}
