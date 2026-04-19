@@ -2,31 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Swiss Minimalism Theme - Off-white with Electric Accent */
+/* Futuristic ML Theme - Dark Navy with Neon Cyan */
 :root {
-  /* Primary brand - Electric Indigo */
-  --brand: #4F46E5;           /* Indigo-600 - bold & electric */
-  --brand-light: #6366F1;     /* Indigo-500 */
-  --brand-dark: #3730A3;      /* Indigo-800 */
-  --brand-neon: #7C3AED;      /* Violet-500 for accents */
+  /* Primary brand - Neon Cyan */
+  --brand: #00FFFF;           /* Pure Cyan - electric & futuristic */
+  --brand-light: #67E8F9;     /* Cyan-300 - softer glow */
+  --brand-dark: #06B6D4;      /* Cyan-500 - deeper tone */
+  --brand-neon: #00FFFF;      /* Pure cyan for maximum impact */
   
-  /* Secondary accent - Cyan */
-  --accent: #06B6D4;          /* Cyan-500 */
-  --accent-light: #22D3EE;    /* Cyan-400 */
-  --accent-dark: #0891B2;     /* Cyan-600 */
+  /* Secondary accent - Electric Blue */
+  --accent: #0EA5E9;          /* Sky-500 - complementary blue */
+  --accent-light: #38BDF8;    /* Sky-400 */
+  --accent-dark: #0284C7;     /* Sky-600 */
   
-  /* Swiss minimalism neutrals */
-  --off-white: #F4F4F0;       /* Warm off-white background */
-  --charcoal: #121212;        /* Deep charcoal for dark mode */
-  --slate-dark: #1A1A1A;      /* Slightly lighter charcoal */
+  /* Dark navy foundation */
+  --navy-base: #0A1628;       /* Deep navy - primary background */
+  --navy-light: #0F2440;      /* Lighter navy - cards/sections */
+  --navy-dark: #050C18;       /* Near black - depth */
   --pure-white: #FFFFFF;
   --pure-black: #000000;
   
-  /* Text colors */
-  --text-primary-light: #121212;
-  --text-secondary-light: #525252;
-  --text-primary-dark: #F4F4F0;
-  --text-secondary-dark: #A3A3A3;
+  /* Text colors - optimized for dark mode */
+  --text-primary-light: #F0F9FF;   /* Crisp white-blue */
+  --text-secondary-light: #94A3B8; /* Soft slate */
+  --text-primary-dark: #F0F9FF;
+  --text-secondary-dark: #94A3B8;
   
   /* Grid & spacing */
   --grid-unit: 8px;
@@ -36,17 +36,17 @@
 /* Smooth scrolling */
 html { scroll-behavior: smooth; }
 
-/* Base styles - Swiss minimalism */
+/* Base styles - Futuristic dark theme */
 body { 
   @apply antialiased;
-  background-color: var(--off-white);
+  background-color: var(--navy-base);
   color: var(--text-primary-light);
   font-feature-settings: "kern" 1, "liga" 0;
   text-rendering: optimizeLegibility;
 }
 
 .dark body { 
-  background-color: var(--charcoal);
+  background-color: var(--navy-dark);
   color: var(--text-primary-dark);
 }
 
@@ -72,16 +72,39 @@ body {
   background-color: var(--accent);
 }
 
-/* Bold typographic emphasis */
+/* Futuristic neon text glow effect */
 .gradient-text {
   color: var(--brand);
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3);
+  text-transform: uppercase;
 }
 
-/* Solid backgrounds only - Swiss style */
+/* Neon gradient background */
 .gradient-bg {
-  background-color: var(--brand);
+  background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy-base) 100%);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+/* Additional futuristic utilities */
+.neon-border {
+  border: 1px solid var(--brand);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3), inset 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+.neon-text-glow {
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6), 0 0 30px rgba(0, 255, 255, 0.4);
+}
+
+/* Animated pulse for futuristic elements */
+@keyframes neonPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(0, 255, 255, 0.6), 0 0 60px rgba(0, 255, 255, 0.3); }
+}
+
+.neon-pulse {
+  animation: neonPulse 2s ease-in-out infinite;
 }
 
 /* Screen-reader helpers */
@@ -125,24 +148,25 @@ body {
   } 
 }
 
-/* Sharp geometric cards - no glassmorphism */
+/* Sharp futuristic cards with neon glow */
 .swiss-card {
-  background: var(--pure-white);
-  border: 2px solid var(--pure-black);
-  border-radius: 0;
-  box-shadow: 4px 4px 0 var(--pure-black);
-  transition: transform 200ms ease, box-shadow 200ms ease;
+  background: var(--navy-light);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dark .swiss-card {
-  background: var(--slate-dark);
-  border: 2px solid var(--pure-white);
-  box-shadow: 4px 4px 0 var(--pure-white);
+  background: var(--navy-dark);
+  border: 1px solid rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
 }
 
 .swiss-card:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 var(--brand);
+  border-color: var(--brand);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.4), 0 0 80px rgba(0, 255, 255, 0.2);
+  transform: translateY(-4px);
 }
 
 /* Minimal hover lift */
@@ -154,17 +178,19 @@ body {
   transform: translateY(-3px);
 }
 
-/* Bold button with micro-interaction */
+/* Futuristic button with neon glow */
 .glow-on-hover {
   position: relative;
   font-weight: 700;
-  letter-spacing: -0.01em;
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.05em;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
 }
 
 .glow-on-hover:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 16px rgba(79, 70, 229, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), 0 0 60px rgba(0, 255, 255, 0.3);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
 }
 
 .glow-on-hover::after {
@@ -172,14 +198,14 @@ body {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: var(--accent);
+  background: var(--brand);
   opacity: 0;
-  transition: opacity 200ms ease;
-  mix-blend-mode: overlay;
+  transition: opacity 300ms ease;
+  mix-blend-mode: screen;
 }
 
 .glow-on-hover:hover::after {
-  opacity: 0.15;
+  opacity: 0.2;
 }
 
 /* Respect reduced motion */
@@ -190,37 +216,39 @@ body {
   .glow-on-hover::after { display: none; }
 }
 
-/* Custom minimal scrollbar */
+/* Custom futuristic scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--off-white);
-  border-left: 1px solid rgba(0,0,0,0.1);
+  background: var(--navy-base);
+  border-left: 1px solid rgba(0, 255, 255, 0.1);
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: var(--charcoal);
-  border-left: 1px solid rgba(255,255,255,0.1);
+  background: var(--navy-dark);
+  border-left: 1px solid rgba(0, 255, 255, 0.15);
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--brand);
-  border: 2px solid var(--off-white);
-  border-radius: 0;
+  border: 2px solid var(--navy-base);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  border: 2px solid var(--charcoal);
+  border: 2px solid var(--navy-dark);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--brand-dark);
+  background: var(--brand-light);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
 }
 
-/* Grid system utilities for Swiss layout */
+/* Grid system utilities for futuristic layout */
 .grid-swiss {
   display: grid;
   gap: calc(var(--grid-unit) * 3);
@@ -232,17 +260,18 @@ body {
   }
 }
 
-/* Typography scale - bold & clean */
+/* Typography scale - bold & futuristic */
 .text-display {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 800;
   line-height: 1.1;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .text-headline {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 700;
   line-height: 1.2;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.03em;
 }
