@@ -1,7 +1,7 @@
 import { config } from '../config';
 
 export default function About() {
-  const { heading, description, aboutDetails, heroTags: skills, cta } = config;
+  const { heading, aboutDetails, heroTags: skills, cta } = config;
   
   return (
     <section
@@ -16,7 +16,7 @@ export default function About() {
         </h2>
 
         <p className="text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl text-xl mb-10">
-          {description}
+          {config.bio}
         </p>
 
         <dl className="mt-8 grid-swiss grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-base text-gray-600 dark:text-gray-400">

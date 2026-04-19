@@ -1,4 +1,6 @@
-export default function Footer() {
+import { memo } from 'react';
+
+export default memo(function Footer() {
   const year = new Date().getFullYear()
   return (
     <footer aria-label="Site footer" className="py-8 text-center text-sm text-gray-600 dark:text-gray-400 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 border-t border-gray-200 dark:border-gray-700">
@@ -11,4 +13,4 @@ export default function Footer() {
       </div>
     </footer>
   )
-}
+})

@@ -1,7 +1,9 @@
+import { useMemo } from 'react';
 import { config } from '../config';
 
 export default function Skills() {
-  const groups = config.skills;
+  // Memoize the skills groups to prevent unnecessary re-computation
+  const groups = useMemo(() => config.skills, []);
   
   return (
     <section id="skills" aria-labelledby="skills-heading" className="py-16 bg-white dark:bg-gray-800">
