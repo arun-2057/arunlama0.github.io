@@ -13,25 +13,25 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="py-20 bg-offWhite dark:bg-charcoal" role="region" aria-labelledby="projects-heading">
-      <div className="max-w-max mx-auto px-4">
-        <h2 id="projects-heading" className="text-display mb-12 text-brand">Selected Work</h2>
-        <div className="grid-swiss grid md:grid-cols-2 gap-8" role="list">
+    <section id="projects" className="py-16 bg-offWhite dark:bg-charcoal" role="region" aria-labelledby="projects-heading">
+      <div className="max-w-6xl mx-auto px-4">
+        <h2 id="projects-heading" className="text-headline mb-10 text-brand tracking-wide">Projects</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8" role="list">
           {projects.map((p, index) => (
             <article
               key={p.title}
               role="listitem"
               aria-label={`Project: ${p.title}. ${p.desc}`}
-              className="swiss-card bg-white dark:bg-slateDark group relative focus-within:ring-2 focus-within:ring-brand"
+              className="swiss-card bg-white dark:bg-slateDark group relative focus-within:ring-2 focus-within:ring-brand overflow-hidden"
             >
               <a
                 href={p.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Open project ${p.title} - ${p.desc} in a new tab`}
-                className="block"
+                className="block h-full"
               >
-                <div className="relative overflow-hidden border-b-2 border-gray-900 dark:border-white">
+                <div className="relative overflow-hidden border-b border-gray-200 dark:border-gray-700">
                   <picture>
                     <source
                       type="image/webp"
@@ -45,28 +45,28 @@ export default function Projects() {
                       alt={`${p.title} project screenshot showing ${p.tags.join(', ')}`}
                       loading="lazy"
                       width="800"
-                      height="600"
+                      height="450"
                       onError={handleImgError}
-                      className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                      className="w-full h-48 md:h-56 object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                     />
                   </picture>
                 </div>
-                <div className="p-6">
-                  <h3 className="font-bold text-2xl mb-3 text-gray-900 dark:text-white group-hover:text-brand transition-colors tracking-tight">{p.title}</h3>
-                  <p className="text-base text-gray-600 dark:text-gray-400 mb-5 leading-relaxed">
+                <div className="p-5">
+                  <h3 className="font-bold text-xl mb-2 text-gray-900 dark:text-white group-hover:text-brand transition-colors tracking-tight">{p.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed line-clamp-3">
                     {p.desc}
                   </p>
-                  <div className="flex flex-wrap gap-2 mb-6" aria-label={`Technologies used in ${p.title}`}>
+                  <div className="flex flex-wrap gap-1.5 mb-4" aria-label={`Technologies used in ${p.title}`}>
                     {p.tags.map((t, i) => (
                       <span
                         key={t + i}
-                        className="text-xs font-semibold px-4 py-2 rounded-none bg-white dark:bg-slateDark border-2 border-gray-900 dark:border-white hover:border-brand hover:text-brand dark:hover:border-brand dark:hover:text-brand transition-all"
+                        className="text-xs font-medium px-3 py-1.5 rounded bg-white dark:bg-slateDark border border-gray-300 dark:border-gray-600 hover:border-brand hover:text-brand dark:hover:border-brand dark:hover:text-brand transition-all"
                       >
                         {t}
                       </span>
                     ))}
                   </div>
-                  <span className="inline-flex items-center gap-2 bg-brand text-white px-5 py-3 font-bold text-sm glow-on-hover tracking-tight">
+                  <span className="inline-flex items-center gap-1.5 bg-brand text-white px-4 py-2 font-semibold text-xs uppercase tracking-wider glow-on-hover">
                     View Project <span className="transform group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
                   </span>
                 </div>

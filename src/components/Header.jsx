@@ -94,14 +94,17 @@ export default function Header() {
             onClick={() => setIsDark((s) => !s)}
             aria-pressed={isDark}
             aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-            className="p-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+            className="group relative p-2.5 rounded-full border border-gray-300 dark:border-gray-600 hover:border-brand dark:hover:border-brand transition-all focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 dark:focus:ring-offset-navy-dark overflow-hidden"
             title={isDark ? 'Switch to light' : 'Switch to dark'}
           >
-            {isDark ? (
-              <img src={moonIcon} alt="Moon icon" className="w-5 h-5" aria-hidden="true" />
-            ) : (
-              <FaSun className="text-xl" aria-hidden="true" />
-            )}
+            <span className="absolute inset-0 bg-gradient-to-r from-brand/0 via-brand/10 to-brand/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></span>
+            <span className="relative flex items-center justify-center">
+              {isDark ? (
+                <img src={moonIcon} alt="" className="w-5 h-5 text-brand drop-shadow-[0_0_8px_rgba(0,255,255,0.6)]" aria-hidden="true" />
+              ) : (
+                <FaSun className="text-xl text-orange-500 drop-shadow-[0_0_8px_rgba(249,115,22,0.6)]" aria-hidden="true" />
+              )}
+            </span>
           </button>
 
           {/* Mobile menu button */}

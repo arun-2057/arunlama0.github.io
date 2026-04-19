@@ -52,14 +52,14 @@ export default function Hero() {
 
         <div className="lg:col-span-5 flex justify-center lg:justify-end card-anim" style={{ animationDelay: '100ms' }}>
           <div className="relative group">
-            {/* Swiss-style geometric frame */}
-            <div className="absolute -inset-4 border-4 border-brand rounded-none shadow-swiss"></div>
-            <div className="relative w-64 h-64 md:w-80 md:h-80 overflow-hidden border-4 border-gray-900 dark:border-white rounded-none transform group-hover:translate-x-1 group-hover:translate-y-1 transition duration-300">
+            {/* Futuristic circular frame with neon glow */}
+            <div className="absolute -inset-2 border-2 border-brand rounded-full shadow-lg neon-pulse"></div>
+            <div className="relative w-64 h-64 md:w-80 md:h-80 overflow-hidden border-2 border-gray-700 dark:border-gray-600 rounded-full transform group-hover:scale-105 transition duration-300 shadow-xl">
               <picture>
-                <source type="image/webp" srcSet={`${profileWebp200} 200w, ${profileWebp400} 400w`} sizes="(max-width: 768px) 50vw, 200px" />
+                <source type="image/webp" srcSet={`${images.profileWebp200} 200w, ${images.profileWebp400} 400w`} sizes="(max-width: 768px) 50vw, 200px" />
                 <img
-                  src={profileSrc}
-                  srcSet={`${profile200} 200w, ${profile400} 400w`}
+                  src={images.profileSrc}
+                  srcSet={`${images.profile200} 200w, ${images.profile400} 400w`}
                   sizes="(max-width: 768px) 50vw, 200px"
                   alt="Headshot of Arun Lama"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
