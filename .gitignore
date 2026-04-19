@@ -1,1 +1,25 @@
-Nothing should be ignored in this case. The added file `public/profile_optimized-400.jpg` is an image file, which according to the rules should not be added to .gitignore. Since there are no build artifacts, dependencies, or temporary files in the changes, no additional ignore rules are needed.
+```
+# Build artifacts
+dist/
+build/
+*.js
+*.css
+*.png
+
+# Dependencies
+node_modules/
+
+# Editors
+.vscode/
+.idea/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Environment
+.env
+.env.local
+.env.*
+```

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { config } from '../config'
 import { FaSun } from 'react-icons/fa'
 import moonIcon from '/moon-icon.png'
@@ -11,6 +11,9 @@ export default function Header() {
     if (saved) return saved === 'dark'
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
   })
+  const mobileMenuRef = useRef(null)
+  const firstFocusableRef = useRef(null)
+  const lastFocusableRef = useRef(null)
 
   useEffect(() => {
     const root = document.documentElement
@@ -18,6 +21,39 @@ export default function Header() {
     else root.classList.remove('dark')
     localStorage.setItem('theme', isDark ? 'dark' : 'light')
   }, [isDark])
+
+  // Focus trapping for mobile menu accessibility
+  useEffect(() => {
+    if (!menuOpen) return;
+    
+    // Focus first element when menu opens
+    if (firstFocusableRef.current) {
+      firstFocusableRef.current.focus();
+    }
+    
+    const handleTabKey = (e) => {
+      if (e.key !== 'Tab') return;
+      
+      const focusableElements = mobileMenuRef.current?.querySelectorAll(
+        'a[href], button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusableElements || focusableElements.length === 0) return;
+      
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      
+      if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement.focus();
+      } else if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement.focus();
+      }
+    };
+    
+    document.addEventListener('keydown', handleTabKey);
+    return () => document.removeEventListener('keydown', handleTabKey);
+  }, [menuOpen]);
 
   useEffect(() => {
     function onKey(e) {
@@ -91,12 +127,16 @@ export default function Header() {
       {/* Mobile menu */}
       {menuOpen && (
         <div id="mobile-menu" className="md:hidden px-4 pb-4">
-          <div className="max-w-6xl mx-auto glass rounded-xl shadow-lg p-4 flex flex-col gap-2">
-            {links.map((l) => (
+          <div 
+            ref={mobileMenuRef}
+            className="max-w-6xl mx-auto glass rounded-xl shadow-lg p-4 flex flex-col gap-2"
+          >
+            {links.map((l, index) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setMenuOpen(false)}
+                ref={index === 0 ? firstFocusableRef : index === links.length - 1 ? lastFocusableRef : null}
                 className="block py-2.5 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-medium"
               >
                 {l.label}
@@ -107,6 +147,7 @@ export default function Header() {
               download
               aria-label="Download resume"
               onClick={() => setMenuOpen(false)}
+              ref={lastFocusableRef}
               className="mt-2 inline-block glow-on-hover bg-brand text-white px-4 py-2.5 rounded-lg font-semibold text-center"
             >
               Resume

@@ -9,7 +9,7 @@ import { config } from '../config'
 function sanitizeInput(str) {
   if (typeof str !== 'string') return '';
   // Remove HTML tags, script injections, and trim
-  return str.replace(/[<>\"'&]/g, '').replace(/javascript:/gi, '').trim();
+  return str.replace(/[<>"'&]/g, '').replace(/javascript:/gi, '').trim();
 }
 
 // Email validation with stricter regex
@@ -35,24 +35,14 @@ const submissionTracker = {
   }
 };
 
-// Generate CSRF token (client-side simulation)
-function generateCSRFToken() {
-  return btoa(`${Date.now()}-${Math.random().toString(36).substring(2)}`);
-}
-
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(null)
   const [copied, setCopied] = useState('')
   const [formErrors, setFormErrors] = useState({})
-  const [csrfToken, setCsrfToken] = useState('')
+  const [messageLength, setMessageLength] = useState(0)
   const formRef = useRef(null)
-  
-  // Initialize CSRF token on mount
-  useEffect(() => {
-    setCsrfToken(generateCSRFToken());
-  }, []);
   
   // Validate form inputs with detailed error messages
   function validateForm(formData) {
@@ -101,13 +91,6 @@ export default function Contact() {
       return;
     }
     
-    // Verify CSRF token
-    const token = formData.get('csrf_token');
-    if (!token || token !== csrfToken) {
-      setError('Security validation failed. Please refresh the page and try again.');
-      return;
-    }
-    
     // Check rate limiting
     if (!submissionTracker.canSubmit(config.form.rateLimitWindow, config.form.maxSubmissionsPerWindow)) {
       setError('Too many attempts. Please wait a moment before trying again.')
@@ -132,9 +115,8 @@ export default function Contact() {
       })
       setSubmitted(true)
       form.reset()
+      setMessageLength(0)
       submissionTracker.reset() // Reset rate limit on success
-      // Generate new CSRF token after successful submission
-      setCsrfToken(generateCSRFToken());
     } catch (err) {
       setError('Something went wrong. Please try again or email directly at lamaarun2001@gmail.com')
     } finally {
@@ -275,7 +257,6 @@ export default function Contact() {
               className="flex flex-col gap-4 bg-white dark:bg-gray-700 p-6 md:p-8 rounded-xl border border-gray-100 dark:border-gray-600 shadow-lg"
             >
               <input type="hidden" name="form-name" value="contact" />
-              <input type="hidden" name="csrf_token" value={csrfToken} />
               {/* Improved honeypot field - visually hidden but accessible */}
               <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
                 <label>
@@ -330,6 +311,7 @@ export default function Contact() {
                   aria-required="true"
                   disabled={submitting}
                   maxLength={config.form.maxMessageLength}
+                  onChange={(e) => setMessageLength(e.target.value.length)}
                   className={`w-full p-3.5 rounded-lg border ${formErrors.message ? 'border-red-500' : 'border-gray-200 dark:border-gray-600'} bg-gray-50 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all resize-none`}
                 />
                 <div className="flex justify-between mt-1">
@@ -337,7 +319,7 @@ export default function Contact() {
                     <p className="text-sm text-red-600 dark:text-red-400" role="alert">{formErrors.message}</p>
                   ) : <span></span>}
                   <p className="text-xs text-gray-500 dark:text-gray-400">
-                    <span id="message-length"></span>/{config.form.maxMessageLength}
+                    <span id="message-length">{messageLength}</span>/{config.form.maxMessageLength}
                   </p>
                 </div>
               </div>

@@ -8,8 +8,10 @@ export const config = {
     location: 'Nijgadh, Nepal',
     availability: 'Immediate',
     languages: ['English', 'Nepali'],
-    bio: "I'm a data analyst with a strong foundation in analytics, statistical modeling, and machine learning. I transform raw datasets into actionable business insights via ETL workflows, predictive modeling, and clear visualizations. My experience spans retail and telecom analytics — I focus on solving business problems with data-driven strategies.",
   },
+  
+  // Shared bio text (used in multiple sections)
+  bio: "I'm a data analyst with a strong foundation in analytics, statistical modeling, and machine learning. I transform raw datasets into actionable business insights via ETL workflows, predictive modeling, and clear visualizations. My experience spans retail and telecom analytics — I focus on solving business problems with data-driven strategies.",
 
   // Social Links
   social: {
@@ -94,16 +96,15 @@ export const config = {
   // Form Settings
   form: {
     name: 'contact',
-    honeypotField: 'website_url', // Less obvious name for honeypot
+    honeypotField: 'website_url',
     maxMessageLength: 1000,
     minMessageLength: 10,
-    rateLimitWindow: 60000, // 1 minute in ms
+    rateLimitWindow: 60000,
     maxSubmissionsPerWindow: 3,
   },
   
   // Heading and description for About section
   heading: 'About Me',
-  description: "I'm a data analyst with a strong foundation in analytics, statistical modeling, and machine learning. I transform raw datasets into actionable business insights via ETL workflows, predictive modeling, and clear visualizations. My experience spans retail and telecom analytics — I focus on solving business problems with data-driven strategies.",
   cta: { label: 'Get in Touch', href: '#contact' },
 };
 

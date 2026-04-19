@@ -1,11 +1,16 @@
+import { useMemo } from 'react';
 import { config } from '../config';
 
 export default function Hero() {
-  const profileSrc = '/profile.jpg';
-  const profile400 = '/profile_optimized-400.jpg';
-  const profile200 = '/profile_optimized-200.jpg';
-  const profileWebp400 = '/profile_optimized-400.webp';
-  const profileWebp200 = '/profile_optimized-200.webp';
+  // Memoize image paths to avoid recreation on each render
+  const images = useMemo(() => ({
+    profileSrc: '/profile.jpg',
+    profile400: '/profile_optimized-400.jpg',
+    profile200: '/profile_optimized-200.jpg',
+    profileWebp400: '/profile_optimized-400.webp',
+    profileWebp200: '/profile_optimized-200.webp',
+  }), []);
+  
   return (
     <section id="hero" aria-labelledby="hero-heading" className="pt-32 md:pt-40 pb-16 bg-offWhite dark:bg-charcoal">
       <div className="max-w-max mx-auto px-4 grid lg:grid-cols-12 gap-12 items-center">
@@ -17,7 +22,7 @@ export default function Hero() {
             {config.personal.title}
           </p>
           <p className="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed max-w-2xl">
-            {config.personal.bio}
+            {config.bio}
           </p>
 
           <div className="flex flex-wrap gap-4 items-center mb-8">

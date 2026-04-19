@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import { config } from '../config';
 
-export default function Coursework() {
+export default memo(function Coursework() {
   const courses = config.coursework;
   
   return (
@@ -31,4 +32,4 @@ export default function Coursework() {
       </div>
     </section>
   )
-}
+})
