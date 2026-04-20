@@ -90,7 +90,7 @@ export default function Header() {
     return () => window.removeEventListener('keydown', onKey)
   }, [menuOpen])
 
-  const links = config.navigation
+  const links = config.navigation;
 
   return (
     <header className="backdrop-blur-md bg-white/70 dark:bg-black/70 fixed w-full z-50 shadow-soft border-b border-slate-200 dark:border-white/10" style={{ top: 0 }}>

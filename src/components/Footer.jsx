@@ -33,7 +33,7 @@ export default memo(function Footer() {
   ];
 
   return (
-    <footer aria-label="Site footer" className="py-12 bg-slate-50 dark:bg-[#0a0a0a] border-t border-slate-200 dark:border-white/10">
+    <footer aria-label="Site footer" className="py-12 bg-white dark:bg-[#0a0a0a] text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-white/10">
       <div className="max-w-6xl mx-auto px-4">
         {/* Social Links */}
         <div className="flex justify-center items-center gap-6 mb-8">
@@ -63,7 +63,7 @@ export default memo(function Footer() {
             © {year} <span className="font-semibold text-slate-900 dark:text-slate-100">{config.personal.name}</span>
           </p>
           <p className="text-slate-500 dark:text-slate-500 text-xs mb-6">
-            Data Analyst & ML Engineer
+            Computer Engineering Student & ML Researcher
           </p>
           
           {/* Quick Links */}

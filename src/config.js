@@ -3,7 +3,7 @@ export const config = {
   // Personal Information
   personal: {
     name: 'Arun Lama',
-    title: 'Data Scientist & ML Engineer',
+    title: 'Computer Engineering Student & ML Researcher',
     email: 'lamaarun2001@gmail.com',
     location: 'Nijgadh, Nepal',
     availability: 'Immediate',
@@ -11,13 +11,13 @@ export const config = {
   },
   
   // Hero section - punchy value proposition (1-2 lines max)
-  heroBio: "Building robust data architectures and machine learning models that turn complex datasets into actionable intelligence.",
+  heroBio: "Computer Engineering Student & ML Researcher building high-performance RAG systems and predictive models.",
 
   // About Me section - detailed narrative with personal story
-  aboutBio: "I'm a developer and data scientist passionate about uncovering the stories hidden in data. From predicting Formula 1 standings to analyzing market values in professional football, I specialize in building systems that challenge the status quo. My journey through the MLH community has shaped my focus on collaborative, open-source development and rigorous model design.",
+  aboutBio: "I am a Computer Engineering student (Class of 2025) and an Independent ML Researcher with over 4 years of hands-on experience in Python and Data Science. My work bridges the gap between academic theory and real-world deployment—from engineering predictive models for global retail giants to optimizing Large Language Models (LLMs) for high-speed performance.",
   
   // Extended bio paragraph for About section
-  aboutBioExtended: "I combine technical expertise with business acumen to solve real-world challenges. Whether it's building predictive models, optimizing pipelines, or designing interactive dashboards, I focus on creating solutions that drive measurable impact.",
+  aboutBioExtended: "An active Kaggle competitor, I thrive on the challenge of translating complex datasets into actionable business intelligence. My expertise spans the full ML lifecycle: building robust ETL pipelines, designing neural networks in PyTorch, and deploying RAG systems that cut latency by 60%. Whether I'm forecasting market trends or optimizing RAG pipelines to run on minimal hardware, I am driven by the pursuit of efficient, data-driven solutions.",
 
   // Social Links
   social: {
@@ -31,7 +31,7 @@ export const config = {
     { href: '#about', label: 'About' },
     { href: '#skills', label: 'Skills' },
     { href: '#coursework', label: 'Coursework' },
-    { href: '#projects', label: 'Projects' },
+    { href: '#projects', label: 'Projects', hideDot: true },
     { href: '#contact', label: 'Contact' },
   ],
 
@@ -90,14 +90,14 @@ export const config = {
 
   // About Section Details
   aboutDetails: [
+    { label: 'Graduation', value: 'Class of 2025' },
     { label: 'Location', value: 'Nijgadh, Nepal' },
     { label: 'Availability', value: 'Immediate' },
-    { label: 'Languages', value: 'English, Nepali' },
-    { label: 'Tools', value: 'Python, SQL, Tableau, Power BI' },
+    { label: 'Experience', value: '4+ Years' },
   ],
 
   // Hero Tags - clean text labels without '#' symbols
-  heroTags: ['Forecasting', 'Churn Prediction', 'ETL & SQL', 'Visualization'],
+  heroTags: ['Forecasting', 'ETL', 'RAG', 'PyTorch'],
 
   // Resume Download Path
   resumePath: '/ATSversion.pdf',

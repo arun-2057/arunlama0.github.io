@@ -1,21 +1,38 @@
-```
+```gitignore
 # Dependencies
 node_modules/
 
 # Build artifacts
 dist/
+build/
+*.min.js
+*.min.css
 
 # Environment
 .env
 .env.local
-.env.*
+*.env.*
 
-# Logs
-*.log
-
-# Editor
+# Editors
 .vscode/
 .idea/
+*.swp
+*.swo
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
 
 # OS
 .DS_Store
