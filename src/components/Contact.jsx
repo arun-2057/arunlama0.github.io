@@ -160,7 +160,7 @@ export default function Contact() {
           </div>
 
           <div className="grid gap-4">
-            <div className="contact-card p-5 bg-white dark:bg-slateDark rounded-xl border border-gray-200 dark:border-gray-700 shadow-soft hover:shadow-medium transform hover:-translate-y-1 transition-all">
+            <div className="contact-card swiss-card accent-left shimmer-border p-5 bg-white dark:bg-slateDark rounded-xl border border-gray-200 dark:border-gray-700 shadow-soft hover:shadow-medium transform hover:-translate-y-1 transition-all">
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-gradient-to-br from-indigo-500 to-cyan-500 rounded-lg text-white">
                   <MdEmail className="text-2xl" aria-hidden="true" />
@@ -185,7 +185,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="contact-card p-5 bg-white dark:bg-slateDark rounded-xl border border-gray-200 dark:border-gray-700 shadow-soft hover:shadow-medium transform hover:-translate-y-1 transition-all">
+            <div className="contact-card swiss-card accent-left shimmer-border p-5 bg-white dark:bg-slateDark rounded-xl border border-gray-200 dark:border-gray-700 shadow-soft hover:shadow-medium transform hover:-translate-y-1 transition-all">
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg text-white">
                   <FaGithub className="text-2xl" aria-hidden="true" />
@@ -207,7 +207,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="contact-card p-5 bg-white dark:bg-slateDark rounded-xl border border-gray-200 dark:border-gray-700 shadow-soft hover:shadow-medium transform hover:-translate-y-1 transition-all">
+            <div className="contact-card swiss-card accent-left shimmer-border p-5 bg-white dark:bg-slateDark rounded-xl border border-gray-200 dark:border-gray-700 shadow-soft hover:shadow-medium transform hover:-translate-y-1 transition-all">
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg text-white">
                   <SiKaggle className="text-2xl" aria-hidden="true" />
@@ -254,7 +254,7 @@ export default function Contact() {
               data-netlify="true"
               onSubmit={handleSubmit}
               aria-busy={submitting}
-              className="flex flex-col gap-4 bg-white dark:bg-slateDark p-6 md:p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg"
+              className="swiss-card accent-left shimmer-border flex flex-col gap-4 bg-white dark:bg-slateDark p-6 md:p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg"
             >
               <input type="hidden" name="form-name" value="contact" />
               {/* Improved honeypot field - visually hidden but accessible */}

@@ -19,9 +19,9 @@ export default function About() {
           {config.bio}
         </p>
 
-        <dl className="mt-8 grid-swiss grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-base text-gray-300 dark:text-gray-300">
+        <dl className="mt-8 grid-swiss grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-base">
           {aboutDetails.map(({ label, value }) => (
-            <div key={label} className="swiss-card p-5 bg-navy-light dark:bg-slateDark hover-lift">
+            <div key={label} className="swiss-card accent-left shimmer-border p-5 bg-navy-light dark:bg-slateDark hover-lift">
               <dt className="font-bold text-white dark:text-white tracking-tight mb-2 uppercase">{label}</dt>
               <dd className="text-gray-300 dark:text-gray-300">{value}</dd>
             </div>
@@ -32,7 +32,7 @@ export default function About() {
           {skills.map((s) => (
             <li key={s}>
               <span
-                className="px-5 py-2.5 bg-navy-light dark:bg-slateDark text-sm font-semibold rounded-none border border-brand/50 hover:border-brand hover:text-brand dark:hover:border-brand dark:hover:text-brand transition-all cursor-default tracking-tight text-brand"
+                className="px-5 py-2.5 bg-navy-light dark:bg-slateDark text-sm font-semibold rounded-none border-l-2 border-brand hover:border-brand hover:text-brand dark:hover:border-brand dark:hover:text-brand transition-all cursor-default tracking-tight text-brand swiss-card accent-left"
                 tabIndex={0}
               >
                 {s}
