@@ -46,7 +46,7 @@ export default memo(function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Visit ${link.label}`}
-                className="w-10 h-10 rounded-full flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 group hover:scale-110"
+                className="w-10 h-10 rounded-full flex items-center justify-center text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 group hover:scale-110"
               >
                 <Icon className="text-lg group-hover:scale-125 transition-transform" />
               </a>
