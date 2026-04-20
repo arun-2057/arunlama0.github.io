@@ -129,6 +129,15 @@ export const config = {
   cta: { label: 'Get in Touch', href: '#contact' },
 };
 
+// Image assets configuration
+export const images = {
+  profileSrc: '/profile_optimized.jpg',
+  profile200: '/profile_optimized-200.jpg',
+  profile400: '/profile_optimized-400.jpg',
+  profileWebp200: '/profile_optimized-200.webp',
+  profileWebp400: '/profile_optimized-400.webp',
+};
+
 // Color Theme Configuration
 export const theme = {
   colors: {
