@@ -10,7 +10,7 @@ export default function Hero() {
   ];
 
   return (
-    <section id="hero" aria-labelledby="hero-heading" className="min-h-fit py-20 md:py-24 bg-white dark:bg-[#0a0a0a] border-t border-slate-200 dark:border-white/10">
+    <section id="hero" aria-labelledby="hero-heading" className="min-h-[60vh] py-20 md:py-24 bg-white dark:bg-[#0a0a0a] border-t border-slate-200 dark:border-white/10">
       <div className="max-w-6xl mx-auto px-4">
         {/* Main hero content - Centered Layout */}
         <div className="text-center mb-16">
@@ -25,7 +25,7 @@ export default function Hero() {
               {config.personal.title}
             </p>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto">
-              {config.bio}
+              {config.heroBio}
             </p>
 
             {/* Enhanced CTAs with clear hierarchy - Centered */}
