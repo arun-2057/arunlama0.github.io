@@ -130,7 +130,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-16 bg-white dark:bg-[#0a0a0a] border-t border-slate-200 dark:border-white/10" role="region" aria-labelledby="contact-heading">
+    <section id="contact" className="py-32 my-32 bg-white dark:bg-[#0a0a0a] border-t border-slate-200 dark:border-white/10" role="region" aria-labelledby="contact-heading">
       <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-start">
         {/* Left side - Contact info */}
         <div className="contact-section">
@@ -143,8 +143,8 @@ export default function Contact() {
             <span className="text-sm font-medium text-green-600 dark:text-green-400">Available for new projects</span>
           </div>
 
-          <h2 id="contact-heading" className="text-headline mb-3 text-indigo-600 dark:text-indigo-400 tracking-wide uppercase font-bold">Let's build something</h2>
-          <p className="text-slate-600 dark:text-slate-400 mb-10 text-lg leading-relaxed max-w-xl">Response within 24 hours — Feel free to reach out for discussing data projects, collaborations, or opportunities.</p>
+          <h2 id="contact-heading" className="text-3xl md:text-4xl font-black mb-4 text-slate-900 dark:text-slate-100 tracking-wide uppercase">Let's build something</h2>
+          <p className="text-slate-600 dark:text-slate-400 mb-12 text-lg leading-relaxed max-w-xl">Response within 24 hours — Feel free to reach out for discussing data projects, collaborations, or opportunities.</p>
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 mb-10">

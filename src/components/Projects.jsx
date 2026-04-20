@@ -17,10 +17,10 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="py-16 bg-white dark:bg-[#0a0a0a] border-b border-slate-200 dark:border-white/10" role="region" aria-labelledby="projects-heading">
+    <section id="projects" className="py-16 bg-white dark:bg-[#0a0a0a] border-t border-slate-200 dark:border-white/10" role="region" aria-labelledby="projects-heading">
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-12">
-          <h2 id="projects-heading" className="text-headline mb-3 text-indigo-600 dark:text-indigo-400 tracking-wide uppercase font-bold">Projects</h2>
+          <h2 id="projects-heading" className="text-3xl md:text-4xl font-black mb-3 text-slate-900 dark:text-slate-100 tracking-wide uppercase">Projects</h2>
           <p className="text-slate-600 dark:text-slate-400 max-w-2xl">Featured data science and analytics projects showcasing my expertise in machine learning, ETL pipelines, and business intelligence.</p>
         </div>
         
