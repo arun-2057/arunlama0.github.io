@@ -11,7 +11,7 @@ export const config = {
   },
   
   // Shared bio text (used in multiple sections)
-  bio: "I'm a data analyst with a strong foundation in analytics, statistical modeling, and machine learning. I transform raw datasets into actionable business insights via ETL workflows, predictive modeling, and clear visualizations. My experience spans retail and telecom analytics — I focus on solving business problems with data-driven strategies.",
+  bio: "Data analyst with expertise in predictive modeling, ETL pipelines, and analytics dashboards. I've successfully deployed machine learning models for churn prediction and built data solutions for retail and telecom sectors. I'm passionate about solving business problems with statistical rigor and turning complex analyses into clear, actionable insights.",
 
   // Social Links
   social: {
@@ -75,7 +75,7 @@ export const config = {
       image: '/images/7_optimized.jpg',
     },
     {
-      title: 'Winter_Food_ analysis',
+      title: 'Winter Food Analysis',
       desc: 'Exploratory data analysis of winter food sales using Pandas and Seaborn.',
       metrics: 'Identified 3 key seasonal trends affecting sales',
       tags: ['EDA', 'Seaborn', 'Pandas'],

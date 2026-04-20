@@ -1,14 +1,15 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { MdEmail } from 'react-icons/md'
 import { FaGithub } from 'react-icons/fa'
 import { SiKaggle } from 'react-icons/si'
 import { FaLinkedin } from 'react-icons/fa'
 import { config } from '../config'
+import { AnimatedCheckmark } from './AnimatedCheckmark'
+import FormField from './FormField'
 
 // Input sanitization helper - more comprehensive
 function sanitizeInput(str) {
   if (typeof str !== 'string') return '';
-  // Remove HTML tags, script injections, and trim
   return str.replace(/[<>"'&]/g, '').replace(/javascript:/gi, '').trim();
 }
 
@@ -41,7 +42,7 @@ export default function Contact() {
   const [error, setError] = useState(null)
   const [copied, setCopied] = useState('')
   const [formErrors, setFormErrors] = useState({})
-  const [messageLength, setMessageLength] = useState(0)
+  const [formValues, setFormValues] = useState({ name: '', email: '', message: '' })
   const formRef = useRef(null)
   
   // Validate form inputs with detailed error messages
@@ -51,21 +52,18 @@ export default function Contact() {
     const email = sanitizeInput(formData.get('email'));
     const message = sanitizeInput(formData.get('message'));
     
-    // Name validation
     if (!name || name.length < 2) {
       errors.name = 'Name must be at least 2 characters long';
     } else if (name.length > 50) {
       errors.name = 'Name must be less than 50 characters';
     }
     
-    // Email validation
     if (!email) {
       errors.email = 'Email address is required';
     } else if (!isValidEmail(email)) {
-      errors.email = 'Please enter a valid email address (e.g., name@example.com)';
+      errors.email = 'Please enter a valid email address';
     }
     
-    // Message validation
     if (!message || message.length < config.form.minMessageLength) {
       errors.message = `Message must be at least ${config.form.minMessageLength} characters`;
     } else if (message.length > config.form.maxMessageLength) {
@@ -83,21 +81,17 @@ export default function Contact() {
     const form = e.target
     const formData = new FormData(form)
     
-    // Check for honeypot field (bot detection)
     const honeypotValue = formData.get(config.form.honeypotField);
     if (honeypotValue) {
-      // Silently fail for bots
       console.log('Bot detected');
       return;
     }
     
-    // Check rate limiting
     if (!submissionTracker.canSubmit(config.form.rateLimitWindow, config.form.maxSubmissionsPerWindow)) {
       setError('Too many attempts. Please wait a moment before trying again.')
       return
     }
     
-    // Validate form
     const errors = validateForm(formData)
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors)
@@ -115,10 +109,10 @@ export default function Contact() {
       })
       setSubmitted(true)
       form.reset()
-      setMessageLength(0)
-      submissionTracker.reset() // Reset rate limit on success
+      setFormValues({ name: '', email: '', message: '' })
+      submissionTracker.reset()
     } catch (err) {
-      setError('Something went wrong. Please try again or email directly at lamaarun2001@gmail.com')
+      setError('Something went wrong. Please try again or email directly.')
     } finally {
       setSubmitting(false)
     }
@@ -131,74 +125,80 @@ export default function Contact() {
       setError(null)
       setTimeout(() => setCopied(''), 2000)
     } catch (err) {
-      setError('Unable to copy to clipboard. Please manually copy the email address.')
+      setError('Unable to copy to clipboard.')
     }
   }
 
   return (
-    <section id="contact" className="py-16 bg-offWhite dark:bg-charcoal" role="region" aria-labelledby="contact-heading">
+    <section id="contact" className="py-16 bg-dark-light dark:bg-dark-light" role="region" aria-labelledby="contact-heading">
       <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-start">
+        {/* Left side - Contact info */}
         <div className="contact-section">
           <h2 id="contact-heading" className="text-headline mb-3 text-brand tracking-wide uppercase font-bold">Contact</h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-8 text-lg leading-relaxed">Feel free to reach out — quick email or use the form to send a message.</p>
+          <p className="text-gray-600 dark:text-gray-400 mb-10 text-lg leading-relaxed max-w-xl">Feel free to reach out — I'm always interested in discussing data projects, collaborations, or opportunities.</p>
 
-          <div className="flex flex-wrap gap-4 mb-8">
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-4 mb-10">
             <a
               href={`mailto:${config.personal.email}`}
-              className="inline-flex items-center gap-2 glow-on-hover bg-brand text-white px-5 py-3 rounded-lg shadow-md hover:shadow-lg transition-all font-semibold"
+              className="btn btn-primary group"
             >
-              <MdEmail aria-hidden="true" /> Email me
+              <MdEmail className="group-hover:scale-110 transition-transform" aria-hidden="true" /> Email Me
             </a>
             <a
               href={config.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border-2 border-gray-300 dark:border-gray-600 px-5 py-3 rounded-lg hover:border-brand hover:text-brand dark:hover:border-brand dark:hover:text-brand transition-all font-semibold hover-lift text-gray-800 dark:text-gray-200"
+              className="btn btn-secondary"
             >
               <FaLinkedin aria-hidden="true" /> LinkedIn
             </a>
           </div>
 
+          {/* Contact Info Cards */}
           <div className="grid gap-4">
-            <div className="contact-card swiss-card accent-left shimmer-border p-5 bg-white dark:bg-slateDark rounded-xl border border-gray-200 dark:border-gray-700 shadow-soft hover:shadow-medium transform hover:-translate-y-1 transition-all">
+            {/* Email Card */}
+            <div className="contact-card swiss-card accent-left p-6 bg-dark-lighter dark:bg-dark-lighter hover-lift transition-all">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-gradient-to-br from-indigo-500 to-cyan-500 rounded-lg text-white">
+                <div className="p-3 bg-brand/10 rounded-lg text-brand flex-shrink-0">
                   <MdEmail className="text-2xl" aria-hidden="true" />
                 </div>
-                <div>
-                  <h3 className="card-title font-bold text-lg text-gray-900 dark:text-white tracking-tight">Email</h3>
-                  <p className="card-desc text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">Fast replies for quick questions — I typically respond within 24 hours.</p>
-                  <div className="mt-4 flex flex-wrap items-center gap-3">
-                    <a href={`mailto:${config.personal.email}`} className="inline-flex items-center gap-2 bg-brand text-white px-4 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity">
-                      <MdEmail aria-hidden="true" /> Email
+                <div className="flex-1 min-w-0">
+                  <h3 className="card-title font-bold text-lg text-white dark:text-white tracking-tight">Email</h3>
+                  <p className="card-desc text-sm text-gray-400 dark:text-gray-400 mt-1 leading-relaxed">Fast replies for quick questions — I typically respond within 24 hours.</p>
+                  <div className="mt-4 flex flex-wrap items-center gap-2">
+                    <a href={`mailto:${config.personal.email}`} className="btn btn-primary text-xs py-2 px-3">
+                      <MdEmail aria-hidden="true" /> Send Email
                     </a>
                     <button
                       type="button"
                       onClick={() => handleCopy(config.personal.email, 'email')}
-                      className="btn-outline inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium"
+                      className="btn-outline text-xs py-2 px-3"
+                      aria-label="Copy email address"
                     >
-                      Copy
+                      📋 Copy
                     </button>
-                    <span className="text-sm text-green-600 dark:text-green-400 font-medium">{copied === 'email' ? '✓ Copied!' : ''}</span>
+                    {copied === 'email' && <span className="text-xs text-green-400 font-medium">✓ Copied!</span>}
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="contact-card swiss-card accent-left shimmer-border p-5 bg-white dark:bg-slateDark rounded-xl border border-gray-200 dark:border-gray-700 shadow-soft hover:shadow-medium transform hover:-translate-y-1 transition-all">
+            {/* GitHub Card */}
+            <div className="contact-card swiss-card accent-left p-6 bg-dark-lighter dark:bg-dark-lighter hover-lift transition-all">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg text-white">
+                <div className="p-3 bg-gray-600/20 rounded-lg text-gray-300 flex-shrink-0">
                   <FaGithub className="text-2xl" aria-hidden="true" />
                 </div>
-                <div>
-                  <h3 className="card-title font-bold text-lg text-gray-900 dark:text-white tracking-tight">GitHub</h3>
-                  <p className="card-desc text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">Check out my projects and repos.</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className="card-title font-bold text-lg text-white dark:text-white tracking-tight">GitHub</h3>
+                  <p className="card-desc text-sm text-gray-400 dark:text-gray-400 mt-1 leading-relaxed">Check out my projects and open-source contributions.</p>
                   <div className="mt-4">
                     <a 
                       href={config.social.github} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="btn-outline inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium"
+                      className="btn-outline text-xs py-2 px-3 inline-flex items-center gap-1"
                     >
                       Visit Profile →
                     </a>
@@ -207,20 +207,21 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="contact-card swiss-card accent-left shimmer-border p-5 bg-white dark:bg-slateDark rounded-xl border border-gray-200 dark:border-gray-700 shadow-soft hover:shadow-medium transform hover:-translate-y-1 transition-all">
+            {/* Kaggle Card */}
+            <div className="contact-card swiss-card accent-left p-6 bg-dark-lighter dark:bg-dark-lighter hover-lift transition-all">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg text-white">
+                <div className="p-3 bg-blue-600/20 rounded-lg text-blue-400 flex-shrink-0">
                   <SiKaggle className="text-2xl" aria-hidden="true" />
                 </div>
-                <div>
-                  <h3 className="card-title font-bold text-lg text-gray-900 dark:text-white tracking-tight">Kaggle</h3>
-                  <p className="card-desc text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">Data science notebooks and competitions.</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className="card-title font-bold text-lg text-white dark:text-white tracking-tight">Kaggle</h3>
+                  <p className="card-desc text-sm text-gray-400 dark:text-gray-400 mt-1 leading-relaxed">Data science notebooks and machine learning competitions.</p>
                   <div className="mt-4">
                     <a 
                       href={config.social.kaggle} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="btn-outline inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium"
+                      className="btn-outline text-xs py-2 px-3 inline-flex items-center gap-1"
                     >
                       Visit Profile →
                     </a>
@@ -231,17 +232,32 @@ export default function Contact() {
           </div>
         </div>
 
-        <div>
+        {/* Right side - Contact Form */}
+        <div className="md:mt-0">
           {submitted ? (
-            <div role="status" aria-live="polite" className="p-6 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 text-green-800 dark:text-green-200 rounded-xl shadow-lg border border-green-200 dark:border-green-800">
-              <div className="flex items-start gap-4">
-                <div className="text-3xl">✅</div>
+            <div role="status" aria-live="polite" className="p-8 bg-gradient-to-br from-green-900/30 to-brand/10 text-green-300 rounded border border-green-800/50 backdrop-blur-sm animate-fadeIn swiss-card">
+              <div className="flex flex-col items-center justify-center text-center gap-6">
+                <AnimatedCheckmark isVisible={true} size="large" />
                 <div>
-                  <p className="font-bold text-lg">Message sent successfully!</p>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-1">Thanks — I'll get back to you shortly.</p>
-                  <div className="mt-4 flex gap-4">
-                    <button onClick={() => setSubmitted(false)} className="text-sm font-semibold underline hover:no-underline">Send another</button>
-                    <a href={`mailto:${config.personal.email}`} className="text-sm font-semibold underline hover:no-underline">Or email directly</a>
+                  <p className="font-bold text-2xl text-white mb-2">Message Sent!</p>
+                  <p className="text-sm text-green-200 mb-6">Thanks for reaching out — I'll get back to you as soon as possible.</p>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <button 
+                      onClick={() => {
+                        setSubmitted(false);
+                        setFormValues({ name: '', email: '', message: '' });
+                      }}
+                      className="text-sm font-semibold text-brand hover:text-brand-light transition-colors underline"
+                    >
+                      ← Send Another
+                    </button>
+                    <span className="text-gray-400 hidden sm:inline">•</span>
+                    <a 
+                      href={`mailto:${config.personal.email}`}
+                      className="text-sm font-semibold text-brand hover:text-brand-light transition-colors underline"
+                    >
+                      Email Directly →
+                    </a>
                   </div>
                 </div>
               </div>
@@ -254,10 +270,11 @@ export default function Contact() {
               data-netlify="true"
               onSubmit={handleSubmit}
               aria-busy={submitting}
-              className="swiss-card accent-left shimmer-border flex flex-col gap-4 bg-white dark:bg-slateDark p-6 md:p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg"
+              className="swiss-card accent-left bg-dark-lighter dark:bg-dark-lighter p-8 border border-dark-lighter"
             >
               <input type="hidden" name="form-name" value="contact" />
-              {/* Improved honeypot field - visually hidden but accessible */}
+              
+              {/* Honeypot field */}
               <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
                 <label>
                   Leave this field empty if you're human: 
@@ -270,87 +287,81 @@ export default function Contact() {
                 </label>
               </div>
 
-              <div>
-                <label htmlFor="name" className="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">Your name</label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="John Doe"
-                  required
-                  aria-required="true"
-                  disabled={submitting}
-                  className={`w-full p-3.5 rounded-lg border ${formErrors.name ? 'border-red-500' : 'border-gray-200 dark:border-gray-600'} bg-gray-50 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all`}
-                />
-                {formErrors.name && <p className="mt-1 text-sm text-red-600 dark:text-red-400" role="alert">{formErrors.name}</p>}
-              </div>
+              {/* Name Field */}
+              <FormField
+                label="Your Name"
+                name="name"
+                type="text"
+                placeholder="John Doe"
+                value={formValues.name}
+                onChange={(e) => setFormValues({ ...formValues, name: e.target.value })}
+                error={formErrors.name}
+                required
+              />
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">Your email</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="john@example.com"
-                  required
-                  aria-required="true"
-                  disabled={submitting}
-                  className={`w-full p-3.5 rounded-lg border ${formErrors.email ? 'border-red-500' : 'border-gray-200 dark:border-gray-600'} bg-gray-50 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all`}
-                />
-                {formErrors.email && <p className="mt-1 text-sm text-red-600 dark:text-red-400" role="alert">{formErrors.email}</p>}
-              </div>
+              {/* Email Field */}
+              <FormField
+                label="Your Email"
+                name="email"
+                type="email"
+                placeholder="john@example.com"
+                value={formValues.email}
+                onChange={(e) => setFormValues({ ...formValues, email: e.target.value })}
+                error={formErrors.email}
+                autoComplete="email"
+                required
+              />
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  placeholder="Tell me about your project or inquiry..."
-                  required
-                  aria-required="true"
-                  disabled={submitting}
-                  maxLength={config.form.maxMessageLength}
-                  onChange={(e) => setMessageLength(e.target.value.length)}
-                  className={`w-full p-3.5 rounded-lg border ${formErrors.message ? 'border-red-500' : 'border-gray-200 dark:border-gray-600'} bg-gray-50 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all resize-none`}
-                />
-                <div className="flex justify-between mt-1">
-                  {formErrors.message ? (
-                    <p className="text-sm text-red-600 dark:text-red-400" role="alert">{formErrors.message}</p>
-                  ) : <span></span>}
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    <span id="message-length">{messageLength}</span>/{config.form.maxMessageLength}
-                  </p>
-                </div>
-              </div>
+              {/* Message Field */}
+              <FormField
+                label="Message"
+                name="message"
+                type="textarea"
+                placeholder="Tell me about your project or inquiry..."
+                value={formValues.message}
+                onChange={(e) => setFormValues({ ...formValues, message: e.target.value })}
+                error={formErrors.message}
+                maxLength={config.form.maxMessageLength}
+                showCharCount={true}
+                required
+              />
 
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="glow-on-hover bg-brand text-white px-6 py-3 rounded-lg disabled:opacity-60 disabled:cursor-not-allowed shadow-md hover:shadow-lg transition-all font-semibold"
-                >
-                  {submitting ? (
-                    <span className="flex items-center gap-2">
-                      <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
-                      </svg>
-                      Sending...
-                    </span>
-                  ) : 'Send Message'}
-                </button>
-                <a href={`mailto:${config.personal.email}`} className="text-sm font-medium text-brand underline hover:no-underline">Or email directly</a>
-              </div>
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={submitting}
+                className="btn btn-primary w-full mb-4 group disabled:opacity-60 disabled:cursor-not-allowed transition-all"
+              >
+                {submitting ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                    </svg>
+                    Sending...
+                  </span>
+                ) : (
+                  <span className="flex items-center justify-center gap-2 group-hover:gap-3 transition-all">
+                    Send Message
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </span>
+                )}
+              </button>
 
+              {/* Error Message */}
               {error && (
-                <div role="alert" aria-live="assertive" className="p-4 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 rounded-lg border border-red-200 dark:border-red-800">
+                <div role="alert" aria-live="assertive" className="p-4 bg-red-900/30 text-red-300 rounded border border-red-800 animate-shake">
                   <div className="flex items-start gap-2">
-                    <span>⚠️</span>
-                    <span>{error}</span>
+                    <span className="text-xl">⚠️</span>
+                    <span className="text-sm">{error}</span>
                   </div>
                 </div>
               )}
+
+              {/* Alternative Contact */}
+              <p className="text-center text-sm text-gray-400 pt-4">
+                Or <a href={`mailto:${config.personal.email}`} className="text-brand font-semibold hover:text-brand-light transition-colors">email directly</a>
+              </p>
             </form>
           )}
         </div>

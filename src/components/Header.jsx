@@ -124,7 +124,7 @@ export default function Header() {
             href={config.resumePath}
             download
             aria-label="Download resume"
-            className="ml-3 glow-on-hover bg-brand text-navy-dark px-5 py-2.5 rounded-lg text-base font-semibold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
+            className="ml-3 btn btn-secondary text-base"
           >
             Resume
           </a>
@@ -137,20 +137,20 @@ export default function Header() {
             onClick={() => setIsDark((s) => !s)}
             aria-pressed={isDark}
             aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-            className={`pill ${isDark ? 'dark' : 'light'} group relative w-[72px] h-[36px] rounded-[18px] transition-all duration-[350ms] ease-[cubic-bezier(.4,0,.2,1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00e5ff] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-navy-dark flex-shrink-0 border-[1.5px] ${isDark ? 'bg-[#1a2a3a] border-[rgba(0,229,255,0.35)]' : 'bg-[#00c4d4] border-[rgba(0,229,255,0.7)]'}`}
+            className={`pill group relative w-[72px] h-[36px] rounded-full transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 focus:ring-offset-dark-base dark:focus:ring-offset-dark-base flex-shrink-0 border-2 ${isDark ? 'bg-dark-light border-brand/30' : 'bg-white border-brand/20'}`}
             title={isDark ? 'Switch to light' : 'Switch to dark'}
           >
-            <div className={`thumb absolute top-[4px] w-[28px] h-[28px] rounded-full flex items-center justify-center transition-all duration-[350ms] ease-[cubic-bezier(.4,0,.2,1)] ${isDark ? 'left-[4px] bg-[#0d1b2e]' : 'left-[40px] bg-white'}`}>
+            <div className={`thumb absolute top-[2px] w-[28px] h-[28px] rounded-full flex items-center justify-center transition-all duration-300 ease-out ${isDark ? 'left-[2px] bg-dark-base' : 'left-[38px] bg-white'}`}>
               {isDark ? (
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="transition-opacity duration-200">
                   <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-                    stroke="#00e5ff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    stroke="var(--brand)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               ) : (
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="transition-opacity duration-200">
-                  <circle cx="12" cy="12" r="4" stroke="#0a1628" strokeWidth="1.8"/>
+                  <circle cx="12" cy="12" r="4" stroke="var(--brand)" strokeWidth="1.8"/>
                   <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-                    stroke="#0a1628" strokeWidth="1.8" strokeLinecap="round"/>
+                    stroke="var(--brand)" strokeWidth="1.8" strokeLinecap="round"/>
                 </svg>
               )}
             </div>
@@ -208,7 +208,7 @@ export default function Header() {
               aria-label="Download resume"
               onClick={() => setMenuOpen(false)}
               ref={lastFocusableRef}
-              className="mt-2 inline-block glow-on-hover bg-brand text-navy-dark px-4 py-2.5 rounded-lg font-semibold text-center"
+              className="mt-2 inline-block btn btn-secondary text-center"
             >
               Resume
             </a>
