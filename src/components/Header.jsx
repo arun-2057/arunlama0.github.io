@@ -93,7 +93,7 @@ export default function Header() {
   const links = config.navigation
 
   return (
-    <header className="backdrop-blur glass fixed w-full z-50 shadow-soft" style={{ top: 0 }}>
+    <header className="backdrop-blur-md bg-white/5 fixed w-full z-50 shadow-soft" style={{ top: 0 }}>
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-start justify-between">
         <a href="#hero" className="text-2xl font-bold gradient-text hover:opacity-80 transition-opacity" aria-label="Go to top" style={{ letterSpacing: '0.02em' }}>
           {config.personal.name}

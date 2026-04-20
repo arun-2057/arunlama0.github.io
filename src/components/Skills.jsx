@@ -6,7 +6,7 @@ export default function Skills() {
   const { ref, isVisible } = useIntersectionObserver();
   
   return (
-    <section id="skills" aria-labelledby="skills-heading" className="py-16 bg-[#121212] dark:bg-[#121212]" ref={ref}>
+    <section id="skills" aria-labelledby="skills-heading" className="py-16 bg-[#121212] dark:bg-[#121212] border-b border-white/10" ref={ref}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-12">
           <h2 id="skills-heading" className={`text-headline mb-3 text-[#6366f1] uppercase tracking-wide font-bold transition-all duration-700 ${
