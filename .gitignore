@@ -1,12 +1,23 @@
-```gitignore
+```
 # Dependencies
 node_modules/
 
-# Editors
-.vscode/
+# Build artifacts
+dist/
 
 # Environment
 .env
 .env.local
-*.env.*
+.env.*
+
+# Logs
+*.log
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
 ```

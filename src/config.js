@@ -3,15 +3,21 @@ export const config = {
   // Personal Information
   personal: {
     name: 'Arun Lama',
-    title: 'Data Analyst',
+    title: 'Data Scientist & ML Engineer',
     email: 'lamaarun2001@gmail.com',
     location: 'Nijgadh, Nepal',
     availability: 'Immediate',
     languages: ['English', 'Nepali'],
   },
   
-  // Shared bio text (used in multiple sections)
-  bio: "Predictive Modeling • ETL Pipelines • Business Intelligence. Solving high-stakes problems in Retail and Telecom with data-driven precision.",
+  // Hero section - punchy value proposition (1-2 lines max)
+  heroBio: "Building robust data architectures and machine learning models that turn complex datasets into actionable intelligence.",
+
+  // About Me section - detailed narrative with personal story
+  aboutBio: "I'm a developer and data scientist passionate about uncovering the stories hidden in data. From predicting Formula 1 standings to analyzing market values in professional football, I specialize in building systems that challenge the status quo. My journey through the MLH community has shaped my focus on collaborative, open-source development and rigorous model design.",
+  
+  // Extended bio paragraph for About section
+  aboutBioExtended: "I combine technical expertise with business acumen to solve real-world challenges. Whether it's building predictive models, optimizing pipelines, or designing interactive dashboards, I focus on creating solutions that drive measurable impact.",
 
   // Social Links
   social: {
@@ -90,7 +96,7 @@ export const config = {
     { label: 'Tools', value: 'Python, SQL, Tableau, Power BI' },
   ],
 
-  // Hero Tags
+  // Hero Tags - clean text labels without '#' symbols
   heroTags: ['Forecasting', 'Churn Prediction', 'ETL & SQL', 'Visualization'],
 
   // Resume Download Path

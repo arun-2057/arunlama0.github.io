@@ -33,10 +33,10 @@ export default function About() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`} style={{ transitionDelay: isVisible ? '100ms' : '0ms' }}>
             <p className="text-slate-900 dark:text-slate-100 leading-relaxed max-w-3xl text-lg mb-6">
-              {config.bio}
+              {config.aboutBio}
             </p>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl text-base">
-              I combine technical expertise with business acumen to solve real-world challenges. Whether it's building predictive models, optimizing pipelines, or designing interactive dashboards, I focus on creating solutions that drive measurable impact.
+              {config.aboutBioExtended}
             </p>
           </div>
 
@@ -87,7 +87,7 @@ export default function About() {
                   tabIndex={0}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  ⚡ {s}
+                  {s}
                 </span>
               </li>
             ))}
