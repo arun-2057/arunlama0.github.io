@@ -29,29 +29,11 @@ export const config = {
     { href: '#contact', label: 'Contact' },
   ],
 
-  // Skills Categories with proficiency levels
+  // Skills organized by proficiency tiers (for Tiered Pill System)
   skills: {
-    Programming: [
-      { name: 'Python', level: 'Proficient' },
-      { name: 'SQL', level: 'Proficient' },
-      { name: 'R', level: 'Familiar' }
-    ],
-    'Data & ML': [
-      { name: 'Pandas', level: 'Proficient' },
-      { name: 'NumPy', level: 'Proficient' },
-      { name: 'Scikit-learn', level: 'Proficient' },
-      { name: 'TensorFlow', level: 'Learning' }
-    ],
-    Visualization: [
-      { name: 'Tableau', level: 'Proficient' },
-      { name: 'Power BI', level: 'Familiar' },
-      { name: 'Matplotlib', level: 'Proficient' }
-    ],
-    Tools: [
-      { name: 'Git', level: 'Proficient' },
-      { name: 'Jupyter', level: 'Proficient' },
-      { name: 'Docker', level: 'Learning' }
-    ],
+    expert: ['Python', 'SQL', 'Pandas', 'NumPy', 'Tableau', 'Git'],
+    proficient: ['Scikit-learn', 'Matplotlib', 'Seaborn', 'Jupyter', 'PostgreSQL', 'Excel'],
+    learning: ['TensorFlow', 'Docker', 'Power BI', 'R', 'Airflow'],
   },
 
   // Coursework

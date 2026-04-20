@@ -103,19 +103,23 @@ export default function Header() {
           {links.map((l) => {
             const sectionId = l.href.substring(1)
             const isActive = activeSection === sectionId
+            const isProjects = l.label === 'Projects'
             return (
               <a 
                 key={l.href} 
                 href={l.href} 
-                className={`text-base transition-colors font-medium relative ${
+                className={`text-base transition-colors font-medium relative flex items-center gap-2 ${
                   isActive 
-                    ? 'text-brand' 
-                    : 'text-gray-700 dark:text-gray-300 hover:text-brand'
+                    ? 'text-[#6366f1]' 
+                    : 'text-gray-700 dark:text-gray-300 hover:text-[#6366f1]'
                 }`}
               >
                 {l.label}
-                {isActive && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand rounded-full"></span>
+                {isProjects && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]"></span>
+                )}
+                {isActive && !isProjects && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#6366f1] rounded-full"></span>
                 )}
               </a>
             )
