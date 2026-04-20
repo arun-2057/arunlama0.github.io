@@ -54,7 +54,7 @@ A modern, high-performance personal portfolio built with **React 19**, **Vite 6*
 
 ## 🎨 Design Philosophy
 
-This portfolio follows **Swiss International Style** (International Typographic Style) principles:
+This portfolio follows **Swiss International Style** (International Typographic Style) principles with **2026 Premium UI** refinements:
 
 - **Grid Systems:** Asymmetric layouts built on mathematical grids for visual harmony
 - **Typography First:** Bold, sans-serif typefaces (Inter/Helvetica Now) as primary design elements
@@ -62,15 +62,19 @@ This portfolio follows **Swiss International Style** (International Typographic 
 - **Minimalism:** "Less is more" approach - removing unnecessary decorative elements
 - **Function Over Form:** Every design element serves a clear purpose
 - **Micro-Interactions:** Subtle animations that enhance UX without distracting
+- **Restrained Elegance:** Senior-level design restraint with scaled icons and subtle transitions
+- **Visual Balance:** Centered layouts with optimal max-width constraints for readability
 
 ### Color Palette
 
 | Role | Light Mode | Dark Mode |
 |------|-----------|-----------|
-| Background | Off-White (#F4F4F0) | Deep Charcoal (#121212) |
-| Primary Text | Charcoal (#121212) | Off-White (#F4F4F0) |
-| Accent | Electric Indigo (#4F46E5) | Electric Indigo (#6366F1) |
-| Secondary | Cool Gray (#6B7280) | Warm Gray (#9CA3AF) |
+| Background | White (#FFFFFF) | Deep Black (#0a0a0a) |
+| Primary Text | Slate (#1e293b) | Off-White (#f8fafc) |
+| Accent | Purple (#9333ea) | Purple (#a855f7) |
+| Secondary | Slate Gray (#64748b) | Warm Gray (#94a3b8) |
+| Icons (Default) | Slate 400 (#94a3b8) | Slate 400 (#94a3b8) |
+| Icons (Hover) | Purple 500 (#a855f7) | Purple 500 (#a855f7) |
 
 ---
 
@@ -89,11 +93,21 @@ This portfolio follows **Swiss International Style** (International Typographic 
 - 🎬 **Cascade Animations:** Staggered project card entrance effects
 
 ### Contact Form
-- ✍️ **FormField Component:** Enhanced form fields with focus animations and live validation
-- 📝 **Character Counter:** Real-time message length display with visual progress bar
-- ⚠️ **Error Feedback:** Shake animations for validation errors with clear messaging
-- ✅ **Success State:** Animated checkmark with gradient background on submission
-- 🚫 **Advanced Security:** Honeypot spam detection and rate limiting
+- ✍️ **Premium 2026 Design:** Refined form with transparent inputs, subtle borders, and elegant focus states
+- 🎯 **Centered Layout:** Max-width constrained (max-w-xl) for optimal readability and visual balance
+- 🌟 **Enhanced Focus States:** Purple ring animations on input focus for interactive feedback
+- 📝 **Refined Labels:** Small uppercase labels with proper tracking for professional appearance
+- 🎨 **Modern Button:** Solid purple CTA with hover lift effect and full-width mobile optimization
+- 🛡️ **Advanced Security:** Honeypot spam detection, rate limiting, and input sanitization
+
+### Footer
+- 🔗 **Minimalist Icons:** Scaled-down social icons (w-6 h-6) with restrained senior-level design
+- 🎨 **Subtle Hover Effects:** Slate-to-purple color transitions (text-slate-400 → text-purple-500)
+- 📐 **Clean Layout:** Single-column centered design matching page background
+- ✨ **Dark Mode Ready:** Seamless theme transitions with proper background inheritance
+- 🚫 **No Visual Clutter:** Removed heavy dark boxes for lightweight, modern appearance
+- ↑ **Back-to-Top Button:** Styled button with smooth scroll animation
+- 📋 **Quick Navigation:** Links to all main sections
 
 ### Skills Section
 - ⭐ **Proficiency Icons:** Star-based skill level indicators (Expert/Intermediate/Beginner)
@@ -112,12 +126,6 @@ This portfolio follows **Swiss International Style** (International Typographic 
 - 📋 **Quick Facts Cards:** Animated statistics cards with hover lift effects
 - ⚡ **Core Competencies:** Enhanced skill tags with icons and hover animations
 - 🎯 **Better CTAs:** Improved call-to-action buttons with directional indicators
-
-### Footer
-- 🔗 **Social Media Icons:** Animated circular social links (GitHub, Kaggle, LinkedIn)
-- 🎨 **Color-Coded Hovers:** Different colors for each social platform
-- ↑ **Back-to-Top Button:** Styled button with smooth scroll animation
-- 📋 **Quick Navigation:** Links to all main sections
 
 ### Animations & Effects
 - 🎯 **15+ CSS Animations:** slideUp, shake, cascadeIn, countUp, parallax, and more
