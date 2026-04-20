@@ -11,7 +11,7 @@ export const config = {
   },
   
   // Shared bio text (used in multiple sections)
-  bio: "Data analyst with expertise in predictive modeling, ETL pipelines, and analytics dashboards. I've successfully deployed machine learning models for churn prediction and built data solutions for retail and telecom sectors. I'm passionate about solving business problems with statistical rigor and turning complex analyses into clear, actionable insights.",
+  bio: "Predictive Modeling • ETL Pipelines • Business Intelligence. Solving high-stakes problems in Retail and Telecom with data-driven precision.",
 
   // Social Links
   social: {

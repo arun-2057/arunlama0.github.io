@@ -103,22 +103,18 @@ export default function Header() {
           {links.map((l) => {
             const sectionId = l.href.substring(1)
             const isActive = activeSection === sectionId
-            const isProjects = l.label === 'Projects'
             return (
               <a 
                 key={l.href} 
                 href={l.href} 
-                className={`text-base transition-colors font-medium relative flex items-center gap-2 ${
+                className={`text-base transition-colors font-medium relative ${
                   isActive 
                     ? 'text-indigo-600 dark:text-indigo-400' 
                     : 'text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400'
                 }`}
               >
                 {l.label}
-                {isProjects && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400"></span>
-                )}
-                {isActive && !isProjects && (
+                {isActive && (
                   <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-indigo-600 dark:bg-indigo-400 rounded-full"></span>
                 )}
               </a>
@@ -128,7 +124,7 @@ export default function Header() {
             href={config.resumePath}
             download
             aria-label="Download resume"
-            className="ml-3 btn btn-secondary text-base"
+            className="ml-3 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium"
           >
             Resume
           </a>
