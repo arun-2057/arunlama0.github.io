@@ -19,11 +19,11 @@ export default function About() {
           {config.bio}
         </p>
 
-        <dl className="mt-8 grid-swiss grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-base text-gray-400 dark:text-gray-400">
+        <dl className="mt-8 grid-swiss grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-base text-gray-300 dark:text-gray-300">
           {aboutDetails.map(({ label, value }) => (
             <div key={label} className="swiss-card p-5 bg-navy-light dark:bg-slateDark hover-lift">
               <dt className="font-bold text-white dark:text-white tracking-tight mb-2 uppercase">{label}</dt>
-              <dd className="text-gray-400 dark:text-gray-400">{value}</dd>
+              <dd className="text-gray-300 dark:text-gray-300">{value}</dd>
             </div>
           ))}
         </dl>

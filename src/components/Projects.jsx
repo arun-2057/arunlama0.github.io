@@ -53,7 +53,7 @@ export default function Projects() {
                 </div>
                 <div className="p-4">
                   <h3 className="font-bold text-lg mb-2 text-white dark:text-white group-hover:text-brand transition-colors tracking-tight uppercase">{p.title}</h3>
-                  <p className="text-sm text-gray-400 dark:text-gray-400 mb-3 leading-relaxed line-clamp-2">
+                  <p className="text-sm text-gray-300 dark:text-gray-300 mb-3 leading-relaxed line-clamp-2">
                     {p.desc}
                   </p>
                   {p.metrics && (
@@ -63,14 +63,18 @@ export default function Projects() {
                     </p>
                   )}
                   <div className="flex flex-wrap gap-1.5 mb-4" aria-label={`Technologies used in ${p.title}`}>
-                    {p.tags.map((t, i) => (
-                      <span
-                        key={t + i}
-                        className="text-xs font-medium px-2.5 py-1 rounded bg-navy-dark dark:bg-slateDark border border-brand/30 text-brand hover:border-brand hover:bg-brand/10 transition-all"
-                      >
-                        {t}
-                      </span>
-                    ))}
+                    {p.tags && p.tags.length > 0 ? (
+                      p.tags.map((t, i) => (
+                        <span
+                          key={t + i}
+                          className="text-xs font-medium px-2.5 py-1 rounded bg-navy-dark dark:bg-slateDark border border-brand/30 text-brand hover:border-brand hover:bg-brand/10 transition-all"
+                        >
+                          {t}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="text-xs text-gray-500">No tags specified</span>
+                    )}
                   </div>
                   <span className="inline-flex items-center gap-1.5 bg-brand text-navy-dark px-3 py-1.5 font-semibold text-xs uppercase tracking-wider glow-on-hover">
                     View Project <span className="transform group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
