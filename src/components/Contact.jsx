@@ -134,8 +134,17 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-start">
         {/* Left side - Contact info */}
         <div className="contact-section">
-          <h2 id="contact-heading" className="text-headline mb-3 text-brand tracking-wide uppercase font-bold">Contact</h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-10 text-lg leading-relaxed max-w-xl">Feel free to reach out — I'm always interested in discussing data projects, collaborations, or opportunities.</p>
+          {/* Live Availability Signal */}
+          <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 bg-green-900/20 border border-green-800/30 rounded-full">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+            </span>
+            <span className="text-sm font-medium text-green-400">Available for new projects</span>
+          </div>
+
+          <h2 id="contact-heading" className="text-headline mb-3 text-brand tracking-wide uppercase font-bold">Let's build something</h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-10 text-lg leading-relaxed max-w-xl">Response within 24 hours — Feel free to reach out for discussing data projects, collaborations, or opportunities.</p>
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 mb-10">

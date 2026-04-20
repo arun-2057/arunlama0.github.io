@@ -10,14 +10,14 @@ export default function Hero() {
   ];
 
   return (
-    <section id="hero" aria-labelledby="hero-heading" className="pt-32 md:pt-40 pb-24 bg-[#121212] dark:bg-[#121212]">
+    <section id="hero" aria-labelledby="hero-heading" className="pt-32 md:pt-40 pb-24 bg-[#121212] dark:bg-[#121212] border-b border-white/10">
       <div className="max-w-6xl mx-auto px-4">
         {/* Main hero content */}
         <div className="grid lg:grid-cols-12 gap-12 items-center mb-20">
           <div className="lg:col-span-8 card-anim">
             {/* Gradient H1 */}
-            <h1 id="hero-heading" className="text-display mb-6">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">
+            <h1 id="hero-heading" className="text-display mb-6 font-black">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-blue-400">
                 {config.personal.name}
               </span>
             </h1>
@@ -42,7 +42,7 @@ export default function Hero() {
               <a
                 href={config.resumePath}
                 download
-                className="inline-flex items-center gap-2 text-gray-300 hover:text-[#6366f1] underline underline-offset-4 transition-colors group"
+                className="inline-flex items-center gap-2 text-gray-300 hover:text-[#6366f1] transition-colors group"
               >
                 Download Resume
                 <span className="group-hover:translate-x-1 transition-transform duration-300">↓</span>

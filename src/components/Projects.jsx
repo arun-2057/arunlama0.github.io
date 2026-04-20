@@ -17,7 +17,7 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="py-16 bg-[#121212] dark:bg-[#121212]" role="region" aria-labelledby="projects-heading">
+    <section id="projects" className="py-16 bg-[#121212] dark:bg-[#121212] border-b border-white/10" role="region" aria-labelledby="projects-heading">
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-12">
           <h2 id="projects-heading" className="text-headline mb-3 text-[#6366f1] tracking-wide uppercase font-bold">Projects</h2>
@@ -30,14 +30,14 @@ export default function Projects() {
               key={p.title}
               role="listitem"
               aria-label={`Project: ${p.title}. ${p.desc}`}
-              className="swiss-card bg-[#1A1A1A] dark:bg-[#1A1A1A] group relative focus-within:ring-2 focus-within:ring-[#6366f1] overflow-hidden cursor-pointer animate-cascade hover:shadow-lg transition-all duration-300"
+              className="swiss-card bg-[#1A1A1A]/80 dark:bg-[#1A1A1A]/80 backdrop-blur-md group relative focus-within:ring-2 focus-within:ring-[#6366f1] overflow-hidden cursor-pointer animate-stagger hover:shadow-lg transition-all duration-300"
               style={{ animationDelay: `${index * 100}ms` }}
               onClick={() => setSelectedProject(p)}
               onKeyDown={(e) => e.key === 'Enter' && setSelectedProject(p)}
               tabIndex={0}
             >
               {/* Image section with purple accent bar */}
-              <div className="relative overflow-hidden border-b border-[#2A2A2A] border-l-4 border-l-[#6366f1]">
+              <div className="relative overflow-hidden border-b border-[#2A2A2A] border-l-4 border-l-purple-600">
                 <picture>
                   <source
                     type="image/webp"
@@ -90,7 +90,7 @@ export default function Projects() {
 
                 {/* Solid purple CTA Button */}
                 <motion.button 
-                  className="inline-flex items-center gap-1.5 bg-[#6366f1] text-white px-4 py-2 font-semibold text-xs uppercase tracking-wider hover:bg-[#4f46e5] hover:shadow-lg transition-all"
+                  className="inline-flex items-center gap-1.5 bg-purple-600 text-white px-4 py-2 font-semibold text-xs uppercase tracking-wider hover:bg-purple-700 hover:shadow-lg transition-all"
                   whileHover={{ y: -2 }}
                   whileTap={{ y: 0 }}
                   onClick={(e) => {
