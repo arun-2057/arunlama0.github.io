@@ -33,7 +33,7 @@ export default memo(function Footer() {
   ];
 
   return (
-    <footer aria-label="Site footer" className="py-12 bg-white dark:bg-[#0a0a0a] text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-white/10">
+    <footer aria-label="Site footer" className="py-12 bg-white dark:bg-[#0a0a0a] text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-white/10">
       <div className="max-w-6xl mx-auto px-4">
         {/* Social Links */}
         <div className="flex justify-center items-center gap-6 mb-8">
