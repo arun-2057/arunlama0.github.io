@@ -17,11 +17,11 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="py-16 bg-[#121212] dark:bg-[#121212] border-b border-white/10" role="region" aria-labelledby="projects-heading">
+    <section id="projects" className="py-16 bg-white dark:bg-[#0a0a0a] border-b border-slate-200 dark:border-white/10" role="region" aria-labelledby="projects-heading">
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-12">
-          <h2 id="projects-heading" className="text-headline mb-3 text-[#6366f1] tracking-wide uppercase font-bold">Projects</h2>
-          <p className="text-gray-400 max-w-2xl">Featured data science and analytics projects showcasing my expertise in machine learning, ETL pipelines, and business intelligence.</p>
+          <h2 id="projects-heading" className="text-headline mb-3 text-indigo-600 dark:text-indigo-400 tracking-wide uppercase font-bold">Projects</h2>
+          <p className="text-slate-600 dark:text-slate-400 max-w-2xl">Featured data science and analytics projects showcasing my expertise in machine learning, ETL pipelines, and business intelligence.</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 animate-stagger" role="list">
@@ -30,14 +30,14 @@ export default function Projects() {
               key={p.title}
               role="listitem"
               aria-label={`Project: ${p.title}. ${p.desc}`}
-              className="swiss-card bg-[#1A1A1A]/80 dark:bg-[#1A1A1A]/80 backdrop-blur-md group relative focus-within:ring-2 focus-within:ring-[#6366f1] overflow-hidden cursor-pointer animate-stagger hover:shadow-lg transition-all duration-300"
+              className="swiss-card bg-slate-50 dark:bg-[#111111]/80 backdrop-blur-md group relative focus-within:ring-2 focus-within:ring-indigo-600 dark:focus-within:ring-indigo-400 overflow-hidden cursor-pointer animate-stagger hover:shadow-lg transition-all duration-300 border border-slate-200 dark:border-white/5"
               style={{ animationDelay: `${index * 100}ms` }}
               onClick={() => setSelectedProject(p)}
               onKeyDown={(e) => e.key === 'Enter' && setSelectedProject(p)}
               tabIndex={0}
             >
               {/* Image section with purple accent bar */}
-              <div className="relative overflow-hidden border-b border-[#2A2A2A] border-l-4 border-l-purple-600">
+              <div className="relative overflow-hidden border-b border-slate-200 dark:border-white/5 border-l-4 border-l-purple-600">
                 <picture>
                   <source
                     type="image/webp"
@@ -58,17 +58,17 @@ export default function Projects() {
                 </picture>
                 
                 {/* Metrics overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#121212]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end p-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#121212]/80 dark:from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end p-4">
                   <div className="text-white text-sm font-semibold">
-                    <div className="text-[#6366f1] text-lg">{p.metrics}</div>
+                    <div className="text-indigo-600 dark:text-indigo-400 text-lg">{p.metrics}</div>
                   </div>
                 </div>
               </div>
 
               {/* Content section */}
               <div className="p-5">
-                <h3 className="font-bold text-xl mb-2 text-white group-hover:text-[#6366f1] transition-colors tracking-tight">{p.title}</h3>
-                <p className="text-sm text-gray-400 dark:text-gray-400 mb-4 leading-relaxed line-clamp-3">
+                <h3 className="font-bold text-xl mb-2 text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors tracking-tight">{p.title}</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed line-clamp-3">
                   {p.desc}
                 </p>
 
@@ -78,13 +78,13 @@ export default function Projects() {
                     p.tags.map((t) => (
                       <span 
                         key={t}
-                        className="px-3 py-1 rounded-full bg-[#6366f1]/20 text-[#6366f1] text-xs font-semibold border border-[#6366f1]/30 hover:border-[#6366f1] transition-colors cursor-default"
+                        className="px-3 py-1 rounded-full bg-indigo-600/20 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-semibold border border-indigo-600/30 dark:border-indigo-500/30 hover:border-indigo-600 dark:hover:border-indigo-500 transition-colors cursor-default"
                       >
                         {t}
                       </span>
                     ))
                   ) : (
-                    <span className="text-xs text-gray-500">No tags specified</span>
+                    <span className="text-xs text-slate-500">No tags specified</span>
                   )}
                 </div>
 
@@ -109,7 +109,7 @@ export default function Projects() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Open project ${p.title} in new tab`}
-                className="absolute top-4 right-4 w-10 h-10 bg-[#121212]/70 hover:bg-[#6366f1] rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110"
+                className="absolute top-4 right-4 w-10 h-10 bg-[#121212]/70 dark:bg-black/70 hover:bg-indigo-600 dark:hover:bg-indigo-500 rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110"
               >
                 🔗
               </a>

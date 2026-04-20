@@ -130,21 +130,21 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-16 bg-dark-light dark:bg-dark-light" role="region" aria-labelledby="contact-heading">
+    <section id="contact" className="py-16 bg-white dark:bg-[#0a0a0a] border-t border-slate-200 dark:border-white/10" role="region" aria-labelledby="contact-heading">
       <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-start">
         {/* Left side - Contact info */}
         <div className="contact-section">
           {/* Live Availability Signal */}
-          <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 bg-green-900/20 border border-green-800/30 rounded-full">
+          <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 bg-green-900/20 dark:bg-green-900/30 border border-green-800/30 rounded-full">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
             </span>
-            <span className="text-sm font-medium text-green-400">Available for new projects</span>
+            <span className="text-sm font-medium text-green-600 dark:text-green-400">Available for new projects</span>
           </div>
 
-          <h2 id="contact-heading" className="text-headline mb-3 text-brand tracking-wide uppercase font-bold">Let's build something</h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-10 text-lg leading-relaxed max-w-xl">Response within 24 hours — Feel free to reach out for discussing data projects, collaborations, or opportunities.</p>
+          <h2 id="contact-heading" className="text-headline mb-3 text-indigo-600 dark:text-indigo-400 tracking-wide uppercase font-bold">Let's build something</h2>
+          <p className="text-slate-600 dark:text-slate-400 mb-10 text-lg leading-relaxed max-w-xl">Response within 24 hours — Feel free to reach out for discussing data projects, collaborations, or opportunities.</p>
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 mb-10">
@@ -167,14 +167,14 @@ export default function Contact() {
           {/* Contact Info Cards */}
           <div className="grid gap-4">
             {/* Email Card */}
-            <div className="contact-card swiss-card accent-left p-6 bg-dark-lighter dark:bg-dark-lighter hover-lift transition-all">
+            <div className="contact-card swiss-card accent-left p-6 bg-slate-50 dark:bg-[#111111]/80 backdrop-blur-md hover-lift transition-all border border-slate-200 dark:border-white/5">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-brand/10 rounded-lg text-brand flex-shrink-0">
+                <div className="p-3 bg-indigo-600/10 dark:bg-indigo-500/10 rounded-lg text-indigo-600 dark:text-indigo-400 flex-shrink-0">
                   <MdEmail className="text-2xl" aria-hidden="true" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="card-title font-bold text-lg text-white dark:text-white tracking-tight">Email</h3>
-                  <p className="card-desc text-sm text-gray-400 dark:text-gray-400 mt-1 leading-relaxed">Fast replies for quick questions — I typically respond within 24 hours.</p>
+                  <h3 className="card-title font-bold text-lg text-slate-900 dark:text-white tracking-tight">Email</h3>
+                  <p className="card-desc text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Fast replies for quick questions — I typically respond within 24 hours.</p>
                   <div className="mt-4 flex flex-wrap items-center gap-2">
                     <a href={`mailto:${config.personal.email}`} className="btn btn-primary text-xs py-2 px-3">
                       <MdEmail aria-hidden="true" /> Send Email
@@ -187,21 +187,21 @@ export default function Contact() {
                     >
                       📋 Copy
                     </button>
-                    {copied === 'email' && <span className="text-xs text-green-400 font-medium">✓ Copied!</span>}
+                    {copied === 'email' && <span className="text-xs text-green-600 dark:text-green-400 font-medium">✓ Copied!</span>}
                   </div>
                 </div>
               </div>
             </div>
 
             {/* GitHub Card */}
-            <div className="contact-card swiss-card accent-left p-6 bg-dark-lighter dark:bg-dark-lighter hover-lift transition-all">
+            <div className="contact-card swiss-card accent-left p-6 bg-slate-50 dark:bg-[#111111]/80 backdrop-blur-md hover-lift transition-all border border-slate-200 dark:border-white/5">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-gray-600/20 rounded-lg text-gray-300 flex-shrink-0">
+                <div className="p-3 bg-slate-200 dark:bg-white/10 rounded-lg text-slate-700 dark:text-slate-300 flex-shrink-0">
                   <FaGithub className="text-2xl" aria-hidden="true" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="card-title font-bold text-lg text-white dark:text-white tracking-tight">GitHub</h3>
-                  <p className="card-desc text-sm text-gray-400 dark:text-gray-400 mt-1 leading-relaxed">Check out my projects and open-source contributions.</p>
+                  <h3 className="card-title font-bold text-lg text-slate-900 dark:text-white tracking-tight">GitHub</h3>
+                  <p className="card-desc text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Check out my projects and open-source contributions.</p>
                   <div className="mt-4">
                     <a 
                       href={config.social.github} 
@@ -217,14 +217,14 @@ export default function Contact() {
             </div>
 
             {/* Kaggle Card */}
-            <div className="contact-card swiss-card accent-left p-6 bg-dark-lighter dark:bg-dark-lighter hover-lift transition-all">
+            <div className="contact-card swiss-card accent-left p-6 bg-slate-50 dark:bg-[#111111]/80 backdrop-blur-md hover-lift transition-all border border-slate-200 dark:border-white/5">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-blue-600/20 rounded-lg text-blue-400 flex-shrink-0">
+                <div className="p-3 bg-blue-600/10 dark:bg-blue-500/10 rounded-lg text-blue-600 dark:text-blue-400 flex-shrink-0">
                   <SiKaggle className="text-2xl" aria-hidden="true" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="card-title font-bold text-lg text-white dark:text-white tracking-tight">Kaggle</h3>
-                  <p className="card-desc text-sm text-gray-400 dark:text-gray-400 mt-1 leading-relaxed">Data science notebooks and machine learning competitions.</p>
+                  <h3 className="card-title font-bold text-lg text-slate-900 dark:text-white tracking-tight">Kaggle</h3>
+                  <p className="card-desc text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Data science notebooks and machine learning competitions.</p>
                   <div className="mt-4">
                     <a 
                       href={config.social.kaggle} 
@@ -244,26 +244,26 @@ export default function Contact() {
         {/* Right side - Contact Form */}
         <div className="md:mt-0">
           {submitted ? (
-            <div role="status" aria-live="polite" className="p-8 bg-gradient-to-br from-green-900/30 to-brand/10 text-green-300 rounded border border-green-800/50 backdrop-blur-sm animate-fadeIn swiss-card">
+            <div role="status" aria-live="polite" className="p-8 bg-gradient-to-br from-green-900/30 to-indigo-600/10 dark:from-green-900/20 dark:to-indigo-500/10 text-green-700 dark:text-green-300 rounded border border-green-800/50 backdrop-blur-sm animate-fadeIn swiss-card">
               <div className="flex flex-col items-center justify-center text-center gap-6">
                 <AnimatedCheckmark isVisible={true} size="large" />
                 <div>
-                  <p className="font-bold text-2xl text-white mb-2">Message Sent!</p>
-                  <p className="text-sm text-green-200 mb-6">Thanks for reaching out — I'll get back to you as soon as possible.</p>
+                  <p className="font-bold text-2xl text-slate-900 dark:text-white mb-2">Message Sent!</p>
+                  <p className="text-sm text-green-600 dark:text-green-200 mb-6">Thanks for reaching out — I'll get back to you as soon as possible.</p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <button 
                       onClick={() => {
                         setSubmitted(false);
                         setFormValues({ name: '', email: '', message: '' });
                       }}
-                      className="text-sm font-semibold text-brand hover:text-brand-light transition-colors underline"
+                      className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors underline"
                     >
                       ← Send Another
                     </button>
-                    <span className="text-gray-400 hidden sm:inline">•</span>
+                    <span className="text-slate-400 hidden sm:inline">•</span>
                     <a 
                       href={`mailto:${config.personal.email}`}
-                      className="text-sm font-semibold text-brand hover:text-brand-light transition-colors underline"
+                      className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors underline"
                     >
                       Email Directly →
                     </a>
@@ -279,7 +279,7 @@ export default function Contact() {
               data-netlify="true"
               onSubmit={handleSubmit}
               aria-busy={submitting}
-              className="swiss-card accent-left bg-dark-lighter dark:bg-dark-lighter p-8 border border-dark-lighter"
+              className="swiss-card accent-left bg-slate-50 dark:bg-[#111111]/80 backdrop-blur-md p-8 border border-slate-200 dark:border-white/5"
             >
               <input type="hidden" name="form-name" value="contact" />
               
