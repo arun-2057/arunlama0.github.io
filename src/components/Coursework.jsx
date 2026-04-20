@@ -5,9 +5,9 @@ export default memo(function Coursework() {
   const courses = config.coursework;
   
   return (
-    <section id="coursework" aria-labelledby="coursework-heading" className="py-16 bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 id="coursework-heading" className="text-3xl md:text-4xl font-bold mb-8 gradient-text">
+    <section id="coursework" aria-labelledby="coursework-heading" className="py-12 bg-navy-light dark:bg-navy-dark">
+      <div className="max-w-5xl mx-auto px-4">
+        <h2 id="coursework-heading" className="text-headline mb-8 text-brand uppercase tracking-wide">
           Relevant Coursework
         </h2>
 
@@ -18,13 +18,13 @@ export default memo(function Coursework() {
               tabIndex={0}
               role="article"
               aria-label={c}
-              className="p-5 bg-white dark:bg-gray-700 rounded-xl shadow-soft hover:shadow-medium focus:outline-none focus:ring-2 focus:ring-brand transition-all hover-lift border border-gray-100 dark:border-gray-600"
+              className="p-5 swiss-card focus:outline-none focus:ring-2 focus:ring-brand hover-lift"
             >
               <div className="flex items-start gap-3">
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center text-white font-bold text-sm">
+                <span className="flex-shrink-0 w-8 h-8 rounded bg-brand/10 border border-brand/50 flex items-center justify-center text-brand font-bold text-sm">
                   {i + 1}
                 </span>
-                <span className="text-gray-700 dark:text-gray-300 font-medium">{c}</span>
+                <span className="text-gray-300 font-medium">{c}</span>
               </div>
             </li>
           ))}

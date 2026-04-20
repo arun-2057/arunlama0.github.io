@@ -7,23 +7,23 @@ export default function About() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="py-20 bg-white dark:bg-slateDark"
+      className="py-12 bg-navy-light dark:bg-navy-dark"
       role="region"
     >
-      <div className="max-w-max mx-auto px-4">
-        <h2 id="about-heading" className="text-display mb-8 text-brand">
+      <div className="max-w-5xl mx-auto px-4">
+        <h2 id="about-heading" className="text-headline mb-8 text-brand uppercase tracking-wide">
           {heading}
         </h2>
 
-        <p className="text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl text-xl mb-10">
+        <p className="text-gray-300 dark:text-gray-300 leading-relaxed max-w-3xl text-lg mb-8">
           {config.bio}
         </p>
 
-        <dl className="mt-8 grid-swiss grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-base text-gray-600 dark:text-gray-400">
+        <dl className="mt-8 grid-swiss grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-base text-gray-400 dark:text-gray-400">
           {aboutDetails.map(({ label, value }) => (
-            <div key={label} className="swiss-card p-5 bg-white dark:bg-slateDark hover-lift">
-              <dt className="font-bold text-gray-900 dark:text-white tracking-tight mb-2">{label}</dt>
-              <dd className="text-gray-600 dark:text-gray-400">{value}</dd>
+            <div key={label} className="swiss-card p-5 bg-navy-light dark:bg-slateDark hover-lift">
+              <dt className="font-bold text-white dark:text-white tracking-tight mb-2 uppercase">{label}</dt>
+              <dd className="text-gray-400 dark:text-gray-400">{value}</dd>
             </div>
           ))}
         </dl>
@@ -32,7 +32,7 @@ export default function About() {
           {skills.map((s) => (
             <li key={s}>
               <span
-                className="px-5 py-2.5 bg-white dark:bg-slateDark text-sm font-semibold rounded-none border-2 border-gray-900 dark:border-white hover:border-brand hover:text-brand dark:hover:border-brand dark:hover:text-brand transition-all cursor-default tracking-tight"
+                className="px-5 py-2.5 bg-navy-light dark:bg-slateDark text-sm font-semibold rounded-none border border-brand/50 hover:border-brand hover:text-brand dark:hover:border-brand dark:hover:text-brand transition-all cursor-default tracking-tight text-brand"
                 tabIndex={0}
               >
                 {s}
@@ -45,7 +45,7 @@ export default function About() {
           <div className="mt-10">
             <a
               href={cta.href}
-              className="glow-on-hover inline-block bg-brand text-white px-8 py-4 font-bold tracking-tight shadow-swiss hover:shadow-swiss-hover transition-all"
+              className="glow-on-hover inline-block bg-brand text-navy-dark px-8 py-4 font-bold tracking-tight shadow-swiss hover:shadow-swiss-hover transition-all"
               aria-describedby="about-heading"
             >
               {cta.label || 'Contact'}
