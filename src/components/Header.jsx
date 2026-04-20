@@ -134,6 +134,7 @@ export default function Header() {
             aria-pressed={isDark}
             aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
             className="group relative p-2.5 rounded-full border border-brand/30 hover:border-brand transition-all focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 dark:focus:ring-offset-navy-dark overflow-hidden bg-navy-light/50 dark:bg-navy-dark/50"
+            className="group relative p-2.5 rounded-full border border-gray-300 dark:border-gray-600 hover:border-brand dark:hover:border-brand transition-all focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 dark:focus:ring-offset-navy-dark overflow-hidden"
             title={isDark ? 'Switch to light' : 'Switch to dark'}
           >
             <span className="absolute inset-0 bg-gradient-to-r from-brand/0 via-brand/10 to-brand/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></span>
