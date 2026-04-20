@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 import { config } from '../config'
-import { FaSun } from 'react-icons/fa'
-import moonIcon from '/moon-icon.png'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -128,23 +126,29 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
+          {/* Animated Pill Toggle */}
           <button
             type="button"
             onClick={() => setIsDark((s) => !s)}
             aria-pressed={isDark}
             aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-            className="group relative p-2.5 rounded-full border border-brand/30 hover:border-brand transition-all focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 dark:focus:ring-offset-navy-dark overflow-hidden bg-navy-light/50 dark:bg-navy-dark/50"
-            className="group relative p-2.5 rounded-full border border-gray-300 dark:border-gray-600 hover:border-brand dark:hover:border-brand transition-all focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 dark:focus:ring-offset-navy-dark overflow-hidden"
+            className={`pill ${isDark ? 'dark' : 'light'} group relative w-[72px] h-[36px] rounded-[18px] transition-all duration-[350ms] ease-[cubic-bezier(.4,0,.2,1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00e5ff] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-navy-dark flex-shrink-0 border-[1.5px] ${isDark ? 'bg-[#1a2a3a] border-[rgba(0,229,255,0.35)]' : 'bg-[#00c4d4] border-[rgba(0,229,255,0.7)]'}`}
             title={isDark ? 'Switch to light' : 'Switch to dark'}
           >
-            <span className="absolute inset-0 bg-gradient-to-r from-brand/0 via-brand/10 to-brand/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></span>
-            <span className="relative flex items-center justify-center">
+            <div className={`thumb absolute top-[4px] w-[28px] h-[28px] rounded-full flex items-center justify-center transition-all duration-[350ms] ease-[cubic-bezier(.4,0,.2,1)] ${isDark ? 'left-[4px] bg-[#0d1b2e]' : 'left-[40px] bg-white'}`}>
               {isDark ? (
-                <img src={moonIcon} alt="" className="w-5 h-5 text-brand drop-shadow-[0_0_8px_rgba(0,255,255,0.6)]" aria-hidden="true" />
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="transition-opacity duration-200">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                    stroke="#00e5ff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               ) : (
-                <FaSun className="text-xl text-orange-500 drop-shadow-[0_0_8px_rgba(249,115,22,0.6)]" aria-hidden="true" />
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="transition-opacity duration-200">
+                  <circle cx="12" cy="12" r="4" stroke="#0a1628" strokeWidth="1.8"/>
+                  <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+                    stroke="#0a1628" strokeWidth="1.8" strokeLinecap="round"/>
+                </svg>
               )}
-            </span>
+            </div>
           </button>
 
           {/* Mobile menu button */}

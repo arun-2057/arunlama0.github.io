@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section id="hero" aria-labelledby="hero-heading" className="pt-32 md:pt-40 pb-16 bg-navy-base dark:bg-navy-dark">
       <div className="max-w-5xl mx-auto px-4 grid lg:grid-cols-12 gap-12 items-center">
-        <div className="lg:col-span-12 card-anim">
+        <div className="lg:col-span-8 card-anim">
           <h1 id="hero-heading" className="text-display mb-6">
             <span className="text-brand">{config.personal.name}</span>
           </h1>
@@ -37,6 +37,15 @@ export default function Hero() {
                 {tag}
               </span>
             ))}
+          </div>
+        </div>
+        <div className="lg:col-span-4 card-anim" style={{ animationDelay: '200ms' }}>
+          <div className="swiss-card p-6 h-full flex flex-col justify-center">
+            <div className="text-center">
+              <div className="text-5xl mb-4">📊</div>
+              <h3 className="text-xl font-bold text-brand mb-2">Data-Driven Insights</h3>
+              <p className="text-sm text-gray-400 dark:text-gray-400">Transforming raw data into actionable business strategies through advanced analytics and machine learning.</p>
+            </div>
           </div>
         </div>
       </div>
