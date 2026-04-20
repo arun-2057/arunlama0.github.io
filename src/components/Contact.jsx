@@ -1,8 +1,4 @@
 import { useState, useRef } from 'react'
-import { MdEmail } from 'react-icons/md'
-import { FaGithub } from 'react-icons/fa'
-import { SiKaggle } from 'react-icons/si'
-import { FaLinkedin } from 'react-icons/fa'
 import { config } from '../config'
 import { AnimatedCheckmark } from './AnimatedCheckmark'
 import FormField from './FormField'
@@ -131,9 +127,9 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-32 my-32 bg-white dark:bg-[#0a0a0a] border-t border-slate-200 dark:border-white/10" role="region" aria-labelledby="contact-heading">
-      <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-start">
-        {/* Left side - Contact info */}
-        <div className="contact-section">
+      <div className="max-w-xl mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-12">
           {/* Live Availability Signal */}
           <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 bg-green-900/20 dark:bg-green-900/30 border border-green-800/30 rounded-full">
             <span className="relative flex h-2.5 w-2.5">
@@ -144,106 +140,11 @@ export default function Contact() {
           </div>
 
           <h2 id="contact-heading" className="text-3xl md:text-4xl font-black mb-4 text-slate-900 dark:text-slate-100 tracking-wide uppercase">Let's build something</h2>
-          <p className="text-slate-600 dark:text-slate-400 mb-12 text-lg leading-relaxed max-w-xl">Response within 24 hours — Feel free to reach out for discussing data projects, collaborations, or opportunities.</p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 mb-10">
-            <a
-              href={`mailto:${config.personal.email}`}
-              className="btn btn-primary group"
-            >
-              <MdEmail className="group-hover:scale-110 transition-transform" aria-hidden="true" /> Email Me
-            </a>
-            <a
-              href={config.social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-secondary"
-            >
-              <FaLinkedin aria-hidden="true" /> LinkedIn
-            </a>
-          </div>
-
-          {/* Contact Info Cards */}
-          <div className="grid gap-4">
-            {/* Email Card */}
-            <div className="contact-card swiss-card accent-left p-6 bg-slate-50 dark:bg-[#111111]/80 backdrop-blur-md hover-lift transition-all border border-slate-200 dark:border-white/5">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-indigo-600/10 dark:bg-indigo-500/10 rounded-lg text-indigo-600 dark:text-indigo-400 flex-shrink-0">
-                  <MdEmail className="text-2xl" aria-hidden="true" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="card-title font-bold text-lg text-slate-900 dark:text-white tracking-tight">Email</h3>
-                  <p className="card-desc text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Fast replies for quick questions — I typically respond within 24 hours.</p>
-                  <div className="mt-4 flex flex-wrap items-center gap-2">
-                    <a href={`mailto:${config.personal.email}`} className="btn btn-primary text-xs py-2 px-3">
-                      <MdEmail aria-hidden="true" /> Send Email
-                    </a>
-                    <button
-                      type="button"
-                      onClick={() => handleCopy(config.personal.email, 'email')}
-                      className="btn-outline text-xs py-2 px-3"
-                      aria-label="Copy email address"
-                    >
-                      📋 Copy
-                    </button>
-                    {copied === 'email' && <span className="text-xs text-green-600 dark:text-green-400 font-medium">✓ Copied!</span>}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* GitHub Card */}
-            <div className="contact-card swiss-card accent-left p-6 bg-slate-50 dark:bg-[#111111]/80 backdrop-blur-md hover-lift transition-all border border-slate-200 dark:border-white/5">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-slate-200 dark:bg-white/10 rounded-lg text-slate-700 dark:text-slate-300 flex-shrink-0">
-                  <FaGithub className="text-2xl" aria-hidden="true" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="card-title font-bold text-lg text-slate-900 dark:text-white tracking-tight">GitHub</h3>
-                  <p className="card-desc text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Check out my projects and open-source contributions.</p>
-                  <div className="mt-4">
-                    <a 
-                      href={config.social.github} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="btn-outline text-xs py-2 px-3 inline-flex items-center gap-1"
-                    >
-                      Visit Profile →
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Kaggle Card */}
-            <div className="contact-card swiss-card accent-left p-6 bg-slate-50 dark:bg-[#111111]/80 backdrop-blur-md hover-lift transition-all border border-slate-200 dark:border-white/5">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-blue-600/10 dark:bg-blue-500/10 rounded-lg text-blue-600 dark:text-blue-400 flex-shrink-0">
-                  <SiKaggle className="text-2xl" aria-hidden="true" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="card-title font-bold text-lg text-slate-900 dark:text-white tracking-tight">Kaggle</h3>
-                  <p className="card-desc text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Data science notebooks and machine learning competitions.</p>
-                  <div className="mt-4">
-                    <a 
-                      href={config.social.kaggle} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="btn-outline text-xs py-2 px-3 inline-flex items-center gap-1"
-                    >
-                      Visit Profile →
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">Response within 24 hours — Feel free to reach out for discussing data projects, collaborations, or opportunities.</p>
         </div>
 
-        {/* Right side - Contact Form */}
-        <div className="md:mt-0">
-          {submitted ? (
+        {/* Contact Form */}
+        {submitted ? (
             <div role="status" aria-live="polite" className="p-8 bg-gradient-to-br from-green-900/30 to-indigo-600/10 dark:from-green-900/20 dark:to-indigo-500/10 text-green-700 dark:text-green-300 rounded border border-green-800/50 backdrop-blur-sm animate-fadeIn swiss-card">
               <div className="flex flex-col items-center justify-center text-center gap-6">
                 <AnimatedCheckmark isVisible={true} size="large" />
@@ -339,7 +240,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="btn btn-primary w-full mb-4 group disabled:opacity-60 disabled:cursor-not-allowed transition-all"
+                className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none group"
               >
                 {submitting ? (
                   <span className="flex items-center justify-center gap-2">
@@ -368,8 +269,8 @@ export default function Contact() {
               )}
 
               {/* Alternative Contact */}
-              <p className="text-center text-sm text-gray-400 pt-4">
-                Or <a href={`mailto:${config.personal.email}`} className="text-brand font-semibold hover:text-brand-light transition-colors">email directly</a>
+              <p className="text-center text-sm text-slate-400 pt-4">
+                Or <a href={`mailto:${config.personal.email}`} className="text-purple-600 dark:text-purple-400 font-semibold hover:text-purple-700 dark:hover:text-purple-300 transition-colors">email directly</a>
               </p>
             </form>
           )}
