@@ -10,10 +10,10 @@ export default function Hero() {
   ];
 
   return (
-    <section id="hero" aria-labelledby="hero-heading" className="pt-32 md:pt-40 pb-24 bg-white dark:bg-[#0a0a0a] border-t border-slate-200 dark:border-white/10">
+    <section id="hero" aria-labelledby="hero-heading" className="min-h-fit py-20 md:py-24 bg-white dark:bg-[#0a0a0a] border-t border-slate-200 dark:border-white/10">
       <div className="max-w-6xl mx-auto px-4">
         {/* Main hero content - Centered Layout */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-16">
           <div className="card-anim max-w-4xl mx-auto">
             {/* Gradient H1 */}
             <h1 id="hero-heading" className="text-display mb-6 font-black">
