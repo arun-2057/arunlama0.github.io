@@ -166,7 +166,7 @@ export default function Contact() {
                   <MdEmail className="text-2xl" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">Email</h3>
+                  <h3 className="font-semibold text-lg text-white dark:text-white">Email</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">Fast replies for quick questions — I typically respond within 24 hours.</p>
                   <div className="mt-4 flex flex-wrap items-center gap-3">
                     <a href={`mailto:${config.personal.email}`} className="inline-flex items-center gap-2 bg-brand text-white px-4 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity">
@@ -175,7 +175,7 @@ export default function Contact() {
                     <button
                       type="button"
                       onClick={() => handleCopy(config.personal.email, 'email')}
-                      className="inline-flex items-center gap-2 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg hover:border-brand hover:text-brand transition-colors font-medium"
+                      className="inline-flex items-center gap-2 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg hover:border-brand hover:text-brand transition-colors font-medium text-white dark:text-white"
                     >
                       Copy
                     </button>
@@ -191,14 +191,14 @@ export default function Contact() {
                   <FaGithub className="text-2xl" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">GitHub</h3>
+                  <h3 className="font-semibold text-lg text-white dark:text-white">GitHub</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">Check out my projects and repos.</p>
                   <div className="mt-4">
                     <a 
                       href={config.social.github} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="inline-flex items-center gap-2 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg hover:border-brand hover:text-brand transition-colors font-medium"
+                      className="inline-flex items-center gap-2 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg hover:border-brand hover:text-brand transition-colors font-medium text-white dark:text-white"
                     >
                       Visit Profile →
                     </a>
@@ -213,14 +213,14 @@ export default function Contact() {
                   <SiKaggle className="text-2xl" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">Kaggle</h3>
+                  <h3 className="font-semibold text-lg text-white dark:text-white">Kaggle</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">Data science notebooks and competitions.</p>
                   <div className="mt-4">
                     <a 
                       href={config.social.kaggle} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="inline-flex items-center gap-2 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg hover:border-brand hover:text-brand transition-colors font-medium"
+                      className="inline-flex items-center gap-2 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg hover:border-brand hover:text-brand transition-colors font-medium text-white dark:text-white"
                     >
                       Visit Profile →
                     </a>

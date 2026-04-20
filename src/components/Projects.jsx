@@ -15,7 +15,7 @@ export default function Projects() {
   return (
     <section id="projects" className="py-16 bg-offWhite dark:bg-charcoal" role="region" aria-labelledby="projects-heading">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 id="projects-heading" className="text-headline mb-10 text-brand tracking-wide">Projects</h2>
+        <h2 id="projects-heading" className="text-headline mb-10 text-brand tracking-wide uppercase font-bold">Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8" role="list">
           {projects.map((p, index) => (
             <article
@@ -61,7 +61,7 @@ export default function Projects() {
                       p.tags.map((t, i) => (
                         <span
                           key={t + i}
-                          className="text-xs font-medium px-3 py-1.5 rounded bg-white dark:bg-slateDark border border-gray-300 dark:border-gray-600 hover:border-brand hover:text-brand dark:hover:border-brand transition-all"
+                          className="text-xs font-medium px-3 py-1.5 rounded bg-white dark:bg-slateDark border border-gray-300 dark:border-gray-600 hover:border-brand hover:text-brand dark:hover:border-brand transition-all text-gray-800 dark:text-gray-200"
                         >
                           {t}
                         </span>
