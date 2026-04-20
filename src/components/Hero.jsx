@@ -5,7 +5,7 @@ export default function Hero() {
   const stats = [
     { value: '50+', label: 'ML Models Built' },
     { value: '91%', label: 'Avg Accuracy Rate' },
-    { value: '10+', label: 'Years Experience' },
+    { value: '4+', label: 'Years Experience' },
     { value: '25K+', label: 'Data Records Processed' },
   ];
 
