@@ -2,20 +2,18 @@ import { config } from '../config';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 export default function About() {
-  const { heading, aboutDetails, heroTags: skills, cta } = config;
+  const { heading, cta } = config;
   const { ref, isVisible } = useIntersectionObserver();
-
-  const pullQuote = "Transforming raw data into actionable insights through statistical rigor and machine learning.";
   
   return (
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="py-16 bg-white dark:bg-[#0a0a0a] border-t border-slate-200 dark:border-white/10"
+      className="py-24 bg-white dark:bg-[#0a0a0a] border-t border-slate-200 dark:border-white/10"
       role="region"
       ref={ref}
     >
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-3xl mx-auto px-4 text-center">
         {/* Heading */}
         <div className={`mb-12 transition-all duration-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -23,82 +21,43 @@ export default function About() {
           <h2 id="about-heading" className="text-headline mb-4 text-indigo-600 dark:text-indigo-400 uppercase tracking-wide font-bold">
             {heading}
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-indigo-600 dark:from-indigo-400 to-indigo-600/40 dark:to-indigo-400/40"></div>
+          <div className="h-1 w-20 bg-gradient-to-r from-indigo-600 dark:from-indigo-400 to-indigo-600/40 dark:to-indigo-400/40 mx-auto"></div>
         </div>
 
-        {/* Main bio with pull quote */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
-          {/* Bio text */}
-          <div className={`lg:col-span-2 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`} style={{ transitionDelay: isVisible ? '100ms' : '0ms' }}>
-            <p className="text-slate-900 dark:text-slate-100 leading-relaxed max-w-3xl text-lg mb-6">
-              {config.aboutBio}
-            </p>
-            <p className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl text-base">
-              {config.aboutBioExtended}
-            </p>
-          </div>
-
-          {/* Pull Quote */}
-          <div className={`lg:col-span-1 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`} style={{ transitionDelay: isVisible ? '200ms' : '0ms' }}>
-            <blockquote className="swiss-card p-6 bg-slate-50 dark:bg-[#111111]/80 backdrop-blur-md border-l-4 border-indigo-600 dark:border-indigo-400 hover-lift">
-              <p className="text-indigo-600 dark:text-indigo-400 font-semibold italic mb-4 text-lg">"{pullQuote}"</p>
-              <footer className="text-xs text-slate-500 dark:text-slate-400">My philosophy</footer>
-            </blockquote>
-          </div>
-        </div>
-
-        {/* About Details Cards */}
-        <div className={`mb-16 transition-all duration-700 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`} style={{ transitionDelay: isVisible ? '300ms' : '0ms' }}>
-          <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-6 uppercase tracking-tight">Quick Facts</h3>
-          <dl className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {aboutDetails.map(({ label, value }, index) => (
-              <div 
-                key={label} 
-                className="swiss-card accent-left p-6 bg-slate-50 dark:bg-[#111111]/80 backdrop-blur-md hover-lift transition-all group animate-cascade border border-slate-200 dark:border-white/5"
-                style={{ animationDelay: `${index * 75}ms` }}
-              >
-                <dt className="font-bold text-indigo-600 dark:text-indigo-400 tracking-tight mb-2 uppercase text-sm group-hover:text-indigo-700 dark:group-hover:text-indigo-300 transition-colors">
-                  {label}
-                </dt>
-                <dd className="text-slate-900 dark:text-slate-100 font-semibold text-lg">
-                  {value}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-
-        {/* Skills Tags */}
+        {/* Main bio */}
         <div className={`mb-12 transition-all duration-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`} style={{ transitionDelay: isVisible ? '400ms' : '0ms' }}>
-          <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-6 uppercase tracking-tight">Core Competencies</h3>
-          <ul className="flex flex-wrap gap-3" aria-label="Key skills">
-            {skills.map((s, index) => (
-              <li key={s}>
-                <span
-                  className="px-5 py-2.5 bg-slate-50 dark:bg-[#1A1A1A] text-sm font-semibold rounded-none border border-indigo-600/40 dark:border-indigo-500/40 hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-indigo-600/10 dark:hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-indigo-500 transition-all cursor-default tracking-tight text-indigo-600 dark:text-indigo-500 group hover-lift animate-slideUp"
-                  tabIndex={0}
-                  style={{ animationDelay: `${index * 50}ms` }}
-                >
-                  {s}
-                </span>
-              </li>
-            ))}
-          </ul>
+        }`} style={{ transitionDelay: isVisible ? '100ms' : '0ms' }}>
+          <p className="text-slate-900 dark:text-slate-100 leading-relaxed text-lg mb-6">
+            {config.aboutBio}
+          </p>
+          <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base">
+            {config.aboutBioExtended}
+          </p>
+        </div>
+
+        {/* New Philosophy Section */}
+        <div className={`mb-16 transition-all duration-700 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`} style={{ transitionDelay: isVisible ? '200ms' : '0ms' }}>
+          <h3 className="text-xl font-bold text-indigo-600 dark:text-indigo-400 mb-4 uppercase tracking-wide">
+            My Philosophy: Architecture Over Algorithms
+          </h3>
+          <blockquote className="swiss-card p-8 bg-slate-50 dark:bg-[#111111]/80 backdrop-blur-md border-l-4 border-indigo-600 dark:border-indigo-400 hover-lift text-left">
+            <p className="text-slate-900 dark:text-slate-100 leading-relaxed italic mb-4">
+              "I believe that the most powerful machine learning models are useless if they aren't built on a foundation of clean, resilient data architecture. My approach is rooted in the 'Data-First' mindset: I prioritize engineering robust ETL pipelines and meaningful feature selection before a single line of model code is written.
+            </p>
+            <p className="text-slate-900 dark:text-slate-100 leading-relaxed italic">
+              To me, data science isn't just about achieving high accuracy on a test set; it's about building 'frugal' AI—systems that are optimized for the real world. Whether that's deploying RAG pipelines that run on limited VRAM or forecasting sales for global retailers, I focus on creating solutions that are as efficient as they are accurate. I don't just build models; I build the pipelines that make them sustainable."
+            </p>
+          </blockquote>
         </div>
 
         {/* CTA Button */}
         {cta && cta.href && (
           <div className={`transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`} style={{ transitionDelay: isVisible ? '500ms' : '0ms' }}>
+          }`} style={{ transitionDelay: isVisible ? '300ms' : '0ms' }}>
             <a
               href={cta.href}
               className="btn btn-primary group inline-flex items-center gap-2"
