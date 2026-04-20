@@ -93,7 +93,7 @@ export default function Header() {
   const links = config.navigation
 
   return (
-    <header className="backdrop-blur-md bg-white/5 fixed w-full z-50 shadow-soft" style={{ top: 0 }}>
+    <header className="backdrop-blur-md bg-white/70 dark:bg-black/70 fixed w-full z-50 shadow-soft border-b border-slate-200 dark:border-white/10" style={{ top: 0 }}>
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-start justify-between">
         <a href="#hero" className="text-2xl font-bold gradient-text hover:opacity-80 transition-opacity" aria-label="Go to top" style={{ letterSpacing: '0.02em' }}>
           {config.personal.name}
@@ -110,16 +110,16 @@ export default function Header() {
                 href={l.href} 
                 className={`text-base transition-colors font-medium relative flex items-center gap-2 ${
                   isActive 
-                    ? 'text-[#6366f1]' 
-                    : 'text-gray-700 dark:text-gray-300 hover:text-[#6366f1]'
+                    ? 'text-indigo-600 dark:text-indigo-400' 
+                    : 'text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400'
                 }`}
               >
                 {l.label}
                 {isProjects && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400"></span>
                 )}
                 {isActive && !isProjects && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#6366f1] rounded-full"></span>
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-indigo-600 dark:bg-indigo-400 rounded-full"></span>
                 )}
               </a>
             )
@@ -141,7 +141,7 @@ export default function Header() {
             onClick={() => setIsDark((s) => !s)}
             aria-pressed={isDark}
             aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-            className={`pill group relative w-[72px] h-[36px] rounded-full transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 focus:ring-offset-dark-base dark:focus:ring-offset-dark-base flex-shrink-0 border-2 ${isDark ? 'bg-dark-light border-brand/30' : 'bg-white border-brand/20'}`}
+            className={`pill group relative w-[72px] h-[36px] rounded-full transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-400 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-base flex-shrink-0 border-2 ${isDark ? 'bg-dark-light border-indigo-600/30 dark:border-indigo-400/30' : 'bg-white border-indigo-600/20'}`}
             title={isDark ? 'Switch to light' : 'Switch to dark'}
           >
             <div className={`thumb absolute top-[2px] w-[28px] h-[28px] rounded-full flex items-center justify-center transition-all duration-300 ease-out ${isDark ? 'left-[2px] bg-dark-base' : 'left-[38px] bg-white'}`}>
@@ -163,7 +163,7 @@ export default function Header() {
           {/* Mobile menu button */}
           <button
             type="button"
-            className="md:hidden p-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+            className="md:hidden p-2.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
             aria-controls="mobile-menu"
             aria-expanded={menuOpen}
             aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
@@ -198,8 +198,8 @@ export default function Header() {
                   ref={index === 0 ? firstFocusableRef : index === links.length - 1 ? lastFocusableRef : null}
                   className={`block py-2.5 px-4 rounded-lg transition-colors font-medium ${
                     isActive 
-                      ? 'bg-brand/10 text-brand border-l-2 border-brand' 
-                      : 'hover:bg-gray-100 dark:hover:bg-gray-700'
+                      ? 'bg-indigo-600/10 dark:bg-indigo-400/10 text-indigo-600 dark:text-indigo-400 border-l-2 border-indigo-600 dark:border-indigo-400' 
+                      : 'hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300'
                   }`}
                 >
                   {l.label}
