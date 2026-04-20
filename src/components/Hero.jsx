@@ -1,41 +1,31 @@
-import { useMemo } from 'react';
 import { config } from '../config';
 
 export default function Hero() {
-  // Memoize image paths to avoid recreation on each render
-  const images = useMemo(() => ({
-    profileSrc: '/profile.jpg',
-    profile400: '/profile_optimized-400.jpg',
-    profile200: '/profile_optimized-200.jpg',
-    profileWebp400: '/profile_optimized-400.webp',
-    profileWebp200: '/profile_optimized-200.webp',
-  }), []);
-  
   return (
-    <section id="hero" aria-labelledby="hero-heading" className="pt-32 md:pt-40 pb-16 bg-offWhite dark:bg-charcoal">
-      <div className="max-w-max mx-auto px-4 grid lg:grid-cols-12 gap-12 items-center">
-        <div className="lg:col-span-7 card-anim">
+    <section id="hero" aria-labelledby="hero-heading" className="pt-32 md:pt-40 pb-16 bg-navy-base dark:bg-navy-dark">
+      <div className="max-w-5xl mx-auto px-4 grid lg:grid-cols-12 gap-12 items-center">
+        <div className="lg:col-span-12 card-anim">
           <h1 id="hero-heading" className="text-display mb-6">
             <span className="text-brand">{config.personal.name}</span>
           </h1>
-          <p className="text-headline text-gray-600 dark:text-gray-400 mb-8 font-normal">
+          <p className="text-headline text-gray-400 dark:text-gray-400 mb-8 font-normal">
             {config.personal.title}
           </p>
-          <p className="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed max-w-2xl">
+          <p className="text-lg text-gray-300 dark:text-gray-300 mb-10 leading-relaxed max-w-3xl">
             {config.bio}
           </p>
 
           <div className="flex flex-wrap gap-4 items-center mb-8">
             <a
               href="#projects"
-              className="glow-on-hover inline-block bg-brand text-white px-8 py-4 font-bold tracking-tight shadow-swiss hover:shadow-swiss-hover focus:outline-none focus:ring-2 focus:ring-brand-light transition-all"
+              className="glow-on-hover inline-block bg-brand text-navy-dark px-8 py-4 font-bold tracking-tight shadow-swiss hover:shadow-swiss-hover focus:outline-none focus:ring-2 focus:ring-brand-light transition-all"
             >
               View Projects
             </a>
             <a
               href={config.resumePath}
               download
-              className="inline-block border-2 border-gray-900 dark:border-white px-8 py-4 font-bold tracking-tight hover:bg-brand hover:text-white hover:border-brand dark:hover:bg-brand dark:hover:text-white transition-all swiss-card"
+              className="inline-block border-2 border-brand px-8 py-4 font-bold tracking-tight hover:bg-brand hover:text-navy-dark hover:border-brand dark:hover:bg-brand dark:hover:text-navy-dark transition-all swiss-card"
             >
               Download Resume
             </a>
@@ -43,7 +33,7 @@ export default function Hero() {
 
           <div className="flex flex-wrap gap-3">
             {config.heroTags.map((tag) => (
-              <span key={tag} className="px-5 py-2.5 bg-white dark:bg-slateDark text-sm font-semibold rounded-none border-2 border-gray-900 dark:border-white hover:border-brand hover:text-brand dark:hover:border-brand dark:hover:text-brand transition-all cursor-default tracking-tight">
+              <span key={tag} className="px-5 py-2.5 bg-navy-light dark:bg-slateDark text-sm font-semibold rounded-none border border-brand/50 hover:border-brand hover:text-brand dark:hover:border-brand dark:hover:text-brand transition-all cursor-default tracking-tight text-brand">
                 {tag}
               </span>
             ))}

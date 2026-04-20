@@ -11,6 +11,7 @@ export default function Header() {
     if (saved) return saved === 'dark'
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
   })
+  const [activeSection, setActiveSection] = useState('')
   const mobileMenuRef = useRef(null)
   const firstFocusableRef = useRef(null)
   const lastFocusableRef = useRef(null)
@@ -21,6 +22,29 @@ export default function Header() {
     else root.classList.remove('dark')
     localStorage.setItem('theme', isDark ? 'dark' : 'light')
   }, [isDark])
+  
+  // Active section tracking on scroll
+  useEffect(() => {
+    const sections = config.navigation.map(nav => nav.href.substring(1))
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        })
+      },
+      { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' }
+    )
+    
+    sections.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    
+    return () => observer.disconnect()
+  }, [])
 
   // Focus trapping for mobile menu accessibility
   useEffect(() => {
@@ -73,16 +97,31 @@ export default function Header() {
         </a>
 
         <nav className="hidden md:flex items-center gap-7" aria-label="Primary">
-          {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-base text-gray-700 dark:text-gray-300 hover:text-brand transition-colors font-medium">
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) => {
+            const sectionId = l.href.substring(1)
+            const isActive = activeSection === sectionId
+            return (
+              <a 
+                key={l.href} 
+                href={l.href} 
+                className={`text-base transition-colors font-medium relative ${
+                  isActive 
+                    ? 'text-brand' 
+                    : 'text-gray-700 dark:text-gray-300 hover:text-brand'
+                }`}
+              >
+                {l.label}
+                {isActive && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand rounded-full"></span>
+                )}
+              </a>
+            )
+          })}
           <a
             href={config.resumePath}
             download
             aria-label="Download resume"
-            className="ml-3 glow-on-hover bg-brand text-white px-5 py-2.5 rounded-lg text-base font-semibold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
+            className="ml-3 glow-on-hover bg-brand text-navy-dark px-5 py-2.5 rounded-lg text-base font-semibold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
           >
             Resume
           </a>
@@ -94,6 +133,7 @@ export default function Header() {
             onClick={() => setIsDark((s) => !s)}
             aria-pressed={isDark}
             aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
+            className="group relative p-2.5 rounded-full border border-brand/30 hover:border-brand transition-all focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 dark:focus:ring-offset-navy-dark overflow-hidden bg-navy-light/50 dark:bg-navy-dark/50"
             className="group relative p-2.5 rounded-full border border-gray-300 dark:border-gray-600 hover:border-brand dark:hover:border-brand transition-all focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 dark:focus:ring-offset-navy-dark overflow-hidden"
             title={isDark ? 'Switch to light' : 'Switch to dark'}
           >
@@ -134,24 +174,32 @@ export default function Header() {
             ref={mobileMenuRef}
             className="max-w-6xl mx-auto glass rounded-xl shadow-lg p-4 flex flex-col gap-2"
           >
-            {links.map((l, index) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setMenuOpen(false)}
-                ref={index === 0 ? firstFocusableRef : index === links.length - 1 ? lastFocusableRef : null}
-                className="block py-2.5 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-medium"
-              >
-                {l.label}
-              </a>
-            ))}
+            {links.map((l, index) => {
+              const sectionId = l.href.substring(1)
+              const isActive = activeSection === sectionId
+              return (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setMenuOpen(false)}
+                  ref={index === 0 ? firstFocusableRef : index === links.length - 1 ? lastFocusableRef : null}
+                  className={`block py-2.5 px-4 rounded-lg transition-colors font-medium ${
+                    isActive 
+                      ? 'bg-brand/10 text-brand border-l-2 border-brand' 
+                      : 'hover:bg-gray-100 dark:hover:bg-gray-700'
+                  }`}
+                >
+                  {l.label}
+                </a>
+              )
+            })}
             <a
               href={config.resumePath}
               download
               aria-label="Download resume"
               onClick={() => setMenuOpen(false)}
               ref={lastFocusableRef}
-              className="mt-2 inline-block glow-on-hover bg-brand text-white px-4 py-2.5 rounded-lg font-semibold text-center"
+              className="mt-2 inline-block glow-on-hover bg-brand text-navy-dark px-4 py-2.5 rounded-lg font-semibold text-center"
             >
               Resume
             </a>
