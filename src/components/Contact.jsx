@@ -136,11 +136,11 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-16 bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900">
+    <section id="contact" className="py-16 bg-offWhite dark:bg-charcoal" role="region" aria-labelledby="contact-heading">
       <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-start">
         <div className="contact-section">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 gradient-text">Contact</h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-8 text-lg">Feel free to reach out — quick email or use the form to send a message.</p>
+          <h2 id="contact-heading" className="text-headline mb-3 text-brand tracking-wide uppercase font-bold">Contact</h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-8 text-lg leading-relaxed">Feel free to reach out — quick email or use the form to send a message.</p>
 
           <div className="flex flex-wrap gap-4 mb-8">
             <a
@@ -153,21 +153,21 @@ export default function Contact() {
               href={config.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border-2 border-gray-200 dark:border-gray-600 px-5 py-3 rounded-lg hover:border-brand hover:text-brand dark:hover:border-brand dark:hover:text-brand transition-all font-semibold hover-lift text-white dark:text-white opacity-100"
+              className="inline-flex items-center gap-2 border-2 border-gray-300 dark:border-gray-600 px-5 py-3 rounded-lg hover:border-brand hover:text-brand dark:hover:border-brand dark:hover:text-brand transition-all font-semibold hover-lift text-gray-800 dark:text-gray-200"
             >
               <FaLinkedin aria-hidden="true" /> LinkedIn
             </a>
           </div>
 
           <div className="grid gap-4">
-            <div className="contact-card p-5 bg-white dark:bg-gray-700 rounded-xl border border-gray-100 dark:border-gray-600 shadow-soft hover:shadow-medium transform hover:-translate-y-1 transition-all">
+            <div className="contact-card p-5 bg-white dark:bg-slateDark rounded-xl border border-gray-200 dark:border-gray-700 shadow-soft hover:shadow-medium transform hover:-translate-y-1 transition-all">
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-gradient-to-br from-indigo-500 to-cyan-500 rounded-lg text-white">
                   <MdEmail className="text-2xl" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="card-title font-semibold text-lg text-white dark:text-white">Email</h3>
-                  <p className="card-desc text-sm text-gray-600 dark:text-gray-300 mt-1">Fast replies for quick questions — I typically respond within 24 hours.</p>
+                  <h3 className="card-title font-bold text-lg text-gray-900 dark:text-white tracking-tight">Email</h3>
+                  <p className="card-desc text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">Fast replies for quick questions — I typically respond within 24 hours.</p>
                   <div className="mt-4 flex flex-wrap items-center gap-3">
                     <a href={`mailto:${config.personal.email}`} className="inline-flex items-center gap-2 bg-brand text-white px-4 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity">
                       <MdEmail aria-hidden="true" /> Email
@@ -185,14 +185,14 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="contact-card p-5 bg-white dark:bg-gray-700 rounded-xl border border-gray-100 dark:border-gray-600 shadow-soft hover:shadow-medium transform hover:-translate-y-1 transition-all">
+            <div className="contact-card p-5 bg-white dark:bg-slateDark rounded-xl border border-gray-200 dark:border-gray-700 shadow-soft hover:shadow-medium transform hover:-translate-y-1 transition-all">
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg text-white">
                   <FaGithub className="text-2xl" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="card-title font-semibold text-lg text-white dark:text-white">GitHub</h3>
-                  <p className="card-desc text-sm text-gray-600 dark:text-gray-300 mt-1">Check out my projects and repos.</p>
+                  <h3 className="card-title font-bold text-lg text-gray-900 dark:text-white tracking-tight">GitHub</h3>
+                  <p className="card-desc text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">Check out my projects and repos.</p>
                   <div className="mt-4">
                     <a 
                       href={config.social.github} 
@@ -207,14 +207,14 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="contact-card p-5 bg-white dark:bg-gray-700 rounded-xl border border-gray-100 dark:border-gray-600 shadow-soft hover:shadow-medium transform hover:-translate-y-1 transition-all">
+            <div className="contact-card p-5 bg-white dark:bg-slateDark rounded-xl border border-gray-200 dark:border-gray-700 shadow-soft hover:shadow-medium transform hover:-translate-y-1 transition-all">
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg text-white">
                   <SiKaggle className="text-2xl" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="card-title font-semibold text-lg text-white dark:text-white">Kaggle</h3>
-                  <p className="card-desc text-sm text-gray-600 dark:text-gray-300 mt-1">Data science notebooks and competitions.</p>
+                  <h3 className="card-title font-bold text-lg text-gray-900 dark:text-white tracking-tight">Kaggle</h3>
+                  <p className="card-desc text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">Data science notebooks and competitions.</p>
                   <div className="mt-4">
                     <a 
                       href={config.social.kaggle} 
@@ -254,7 +254,7 @@ export default function Contact() {
               data-netlify="true"
               onSubmit={handleSubmit}
               aria-busy={submitting}
-              className="flex flex-col gap-4 bg-white dark:bg-gray-700 p-6 md:p-8 rounded-xl border border-gray-100 dark:border-gray-600 shadow-lg"
+              className="flex flex-col gap-4 bg-white dark:bg-slateDark p-6 md:p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg"
             >
               <input type="hidden" name="form-name" value="contact" />
               {/* Improved honeypot field - visually hidden but accessible */}
