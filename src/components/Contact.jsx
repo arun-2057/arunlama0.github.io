@@ -140,12 +140,12 @@ export default function Contact() {
           </div>
 
           <h2 id="contact-heading" className="text-3xl md:text-4xl font-black mb-4 text-slate-900 dark:text-slate-100 tracking-wide uppercase">Let's build something</h2>
-          <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">Response within 24 hours — Feel free to reach out for discussing data projects, collaborations, or opportunities.</p>
+          <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">Response within 24 hours — Feel free to reach out for discussing data projects, collaborations, or opportunities!</p>
         </div>
 
         {/* Contact Form */}
         {submitted ? (
-            <div role="status" aria-live="polite" className="p-8 bg-gradient-to-br from-green-900/30 to-indigo-600/10 dark:from-green-900/20 dark:to-indigo-500/10 text-green-700 dark:text-green-300 rounded border border-green-800/50 backdrop-blur-sm animate-fadeIn swiss-card">
+            <div role="status" aria-live="polite" className="p-8 bg-gradient-to-br from-green-900/30 to-indigo-600/10 dark:from-green-900/20 dark:to-indigo-500/10 text-green-700 dark:text-green-300 rounded-lg border border-green-800/30">
               <div className="flex flex-col items-center justify-center text-center gap-6">
                 <AnimatedCheckmark isVisible={true} size="large" />
                 <div>
@@ -240,7 +240,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none group"
+                className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {submitting ? (
                   <span className="flex items-center justify-center gap-2">
@@ -270,11 +270,10 @@ export default function Contact() {
 
               {/* Alternative Contact */}
               <p className="text-center text-sm text-slate-400 pt-4">
-                Or <a href={`mailto:${config.personal.email}`} className="text-purple-600 dark:text-purple-400 font-semibold hover:text-purple-700 dark:hover:text-purple-300 transition-colors">email directly</a>
+                Or <a href={`mailto:${config.personal.email}`} className="text-purple-600 dark:text-purple-400 font-semibold hover:text-purple-700 dark:hover:text-purple-300 transition-colors">email me directly</a>
               </p>
             </form>
           )}
-        </div>
       </div>
     </section>
   )
