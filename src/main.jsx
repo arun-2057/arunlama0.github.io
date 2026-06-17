@@ -3,35 +3,6 @@ import { createRoot } from 'react-dom/client'
 import App from './App'
 import './index.css'
 
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { hasError: false }
-  }
-  static getDerivedStateFromError() {
-    return { hasError: true }
-  }
-  componentDidCatch(error, info) {
-    console.error(error, info)
-  }
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div role="alert" className="p-6 text-center">
-          <p className="mb-3">Something went wrong.</p>
-          <button
-            onClick={() => location.reload()}
-            className="bg-brand text-white px-3 py-1 rounded"
-          >
-            Reload
-          </button>
-        </div>
-      )
-    }
-    return this.props.children
-  }
-}
-
 function ensureRoot() {
   let container = document.getElementById('root')
   if (!container) {
@@ -43,15 +14,26 @@ function ensureRoot() {
 }
 
 const container = ensureRoot()
-document.title = document.title || 'Arun Lama — Data Analyst'
+document.title = document.title || 'Arun Lama — ML Researcher & Data Scientist'
 
 createRoot(container).render(
   <React.StrictMode>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
+    <App />
   </React.StrictMode>
 )
+
+// Register Service Worker for PWA support
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('✓ Service Worker registered:', registration)
+      })
+      .catch((error) => {
+        console.log('✗ Service Worker registration failed:', error)
+      })
+  })
+}
 
 if (typeof import.meta !== 'undefined' && import.meta.hot) {
   import.meta.hot.accept()

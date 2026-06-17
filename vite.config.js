@@ -22,4 +22,6 @@ export default defineConfig({
       }
     },
   },
+  // Copy public files including PWA assets
+  publicDir: 'public',
 })

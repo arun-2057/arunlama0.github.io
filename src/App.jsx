@@ -12,6 +12,8 @@ const About = lazy(() => import('./components/About'));
 const Skills = lazy(() => import('./components/Skills'));
 const Coursework = lazy(() => import('./components/Coursework'));
 const Projects = lazy(() => import('./components/Projects'));
+const Blog = lazy(() => import('./components/Blog'));
+const PerformanceAnalytics = lazy(() => import('./components/PerformanceAnalytics'));
 const Contact = lazy(() => import('./components/Contact'));
 
 // Loading fallback components
@@ -74,6 +76,12 @@ export default function App() {
 				</Suspense>
 				<Suspense fallback={<ProjectsLoadingFallback />}>
 					<Projects />
+				</Suspense>
+				<Suspense fallback={<DefaultLoadingFallback />}>
+					<Blog />
+				</Suspense>
+				<Suspense fallback={<DefaultLoadingFallback />}>
+					<PerformanceAnalytics />
 				</Suspense>
 				<Suspense fallback={<DefaultLoadingFallback />}>
 					<Contact />

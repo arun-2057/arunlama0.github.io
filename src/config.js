@@ -31,8 +31,10 @@ export const config = {
     { href: '#about', label: 'About' },
     { href: '#skills', label: 'Skills' },
     { href: '#coursework', label: 'Coursework' },
-    { href: '#projects', label: 'Projects', hideDot: true },
-    { href: '#contact', label: 'Contact' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#blog', label: 'Articles' },
+    { href: '#performance', label: 'Performance' },
+    { href: '#contact', label: 'Contact', hideDot: true },
   ],
 
   // Skills organized by proficiency tiers (for Tiered Pill System)
