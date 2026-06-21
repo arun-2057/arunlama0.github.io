@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react';
 
-/**
- * Scroll progress indicator bar at top of page
- */
 export default function ScrollProgress() {
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -19,7 +16,7 @@ export default function ScrollProgress() {
 
   return (
     <div
-      className="fixed top-0 left-0 h-1 bg-gradient-to-r from-brand via-brand-light to-brand z-50 transition-all duration-300 ease-out"
+      className="fixed top-0 left-0 h-0.5 bg-gradient-to-r from-slate-600 via-teal-600 to-slate-700 z-50 transition-all duration-300 ease-out"
       style={{ width: `${scrollProgress}%` }}
       aria-hidden="true"
     />

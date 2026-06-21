@@ -1,37 +1,32 @@
-import { useState } from 'react';
 import ColoredBadge from './ColoredBadge';
-import { AnimatedCheckmark } from './AnimatedCheckmark';
 
-/**
- * Case study modal for detailed project information
- */
 export default function ProjectModal({ project, isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
     <div
-      className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn"
+      className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
       onClick={onClose}
     >
       <div
-        className="bg-dark-light max-w-2xl w-full rounded-lg overflow-hidden animate-slideUp max-h-[90vh] overflow-y-auto"
+        className="bg-white dark:bg-slate-800 max-w-xl w-full rounded-xl overflow-hidden max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Project Image */}
-        <div className="relative h-64 overflow-hidden">
+        <div className="relative h-48 overflow-hidden">
           <img
             src={project.image}
             alt={project.title}
             className="w-full h-full object-cover"
             onError={(e) => {
               e.currentTarget.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(
-                '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400"><rect fill="#1A1A1A" width="100%" height="100%"/></svg>'
+                '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300"><rect fill="#334155" width="100%" height="100%"/></svg>'
               );
             }}
           />
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-dark-base/90 flex items-center justify-center text-white hover:bg-brand transition-colors"
+            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 dark:bg-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors"
             aria-label="Close modal"
           >
             ✕
@@ -39,38 +34,34 @@ export default function ProjectModal({ project, isOpen, onClose }) {
         </div>
 
         {/* Content */}
-        <div className="p-8">
-          <h2 className="text-3xl font-bold text-white mb-2">{project.title}</h2>
-          <p className="text-gray-400 mb-6">{project.desc}</p>
+        <div className="p-6">
+          <h2 className="text-xl md:text-2xl font-semibold text-slate-800 dark:text-slate-200 mb-2">{project.title}</h2>
+          <p className="text-sm text-slate-600 dark:text-slate-400 mb-5">{project.desc}</p>
 
           {/* Challenge & Solution */}
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <div className="grid md:grid-cols-2 gap-4 mb-6">
             <div>
-              <h3 className="font-bold text-brand uppercase text-sm mb-3 flex items-center gap-2">
-                <span>🎯</span> Challenge
-              </h3>
-              <p className="text-gray-300">{project.challenge || project.desc}</p>
+              <h3 className="font-medium text-slate-700 dark:text-slate-300 text-xs uppercase mb-2">🎯 Challenge</h3>
+              <p className="text-xs text-slate-600 dark:text-slate-400">{project.challenge || project.desc}</p>
             </div>
             <div>
-              <h3 className="font-bold text-brand uppercase text-sm mb-3 flex items-center gap-2">
-                <AnimatedCheckmark size="small" /> Solution
-              </h3>
-              <p className="text-gray-300">{project.solution || project.metrics}</p>
+              <h3 className="font-medium text-slate-700 dark:text-slate-300 text-xs uppercase mb-2">Solution</h3>
+              <p className="text-xs text-slate-600 dark:text-slate-400">{project.solution || project.metrics}</p>
             </div>
           </div>
 
           {/* Metrics */}
           {project.metrics && (
-            <div className="bg-dark-base p-4 rounded mb-8 border-l-2 border-brand">
-              <p className="text-sm font-semibold text-brand uppercase mb-2">Impact Achieved</p>
-              <p className="text-gray-200">{project.metrics}</p>
+            <div className="bg-slate-50 dark:bg-slate-900/50 p-3 rounded mb-6 border-l-2 border-teal-600">
+              <p className="text-xs font-medium text-teal-600 dark:text-teal-400 uppercase mb-1">Impact Achieved</p>
+              <p className="text-xs text-slate-700 dark:text-slate-300">{project.metrics}</p>
             </div>
           )}
 
           {/* Tech Stack */}
-          <div className="mb-8">
-            <h3 className="font-bold text-brand uppercase text-sm mb-3">Tech Stack</h3>
-            <div className="flex flex-wrap gap-2">
+          <div className="mb-6">
+            <h3 className="font-medium text-slate-700 dark:text-slate-300 text-xs uppercase mb-2">Tech Stack</h3>
+            <div className="flex flex-wrap gap-1.5">
               {project.tags.map((tag) => (
                 <ColoredBadge key={tag} tag={tag} />
               ))}
@@ -78,18 +69,18 @@ export default function ProjectModal({ project, isOpen, onClose }) {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex gap-4">
+          <div className="flex gap-3">
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 btn btn-primary text-center"
+              className="flex-1 bg-slate-600 hover:bg-slate-700 text-white px-4 py-2 rounded-lg font-medium text-xs text-center transition-colors"
             >
               View Full Project →
             </a>
             <button
               onClick={onClose}
-              className="btn btn-secondary"
+              className="border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 px-4 py-2 rounded-lg font-medium text-xs transition-colors"
             >
               Close
             </button>

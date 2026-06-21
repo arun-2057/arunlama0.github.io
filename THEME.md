@@ -1,167 +1,116 @@
-# Futuristic ML Portfolio Theme
+# Calm & Modern Portfolio Theme
 
-## Theme Transformation: Dark Navy with Neon Cyan
+## Theme Transformation: Muted Blue-Gray Palette
 
-Your portfolio has been transformed into a **cutting-edge, futuristic design** optimized for ML/AI roles. This theme positions you as a forward-thinking engineer ready for the next generation of tech.
+Your portfolio has been transformed into a **calm, modern design** optimized for professional credibility and readability. This theme uses muted, sophisticated colors that are easy on the eyes.
 
 ---
 
 ## Color Palette
 
 ### Primary Colors
-- **Dark Navy Base**: `#0A1628` - Deep, professional foundation
-- **Neon Cyan Accent**: `#00FFFF` - Electric, futuristic highlight
-- **Electric Blue**: `#0EA5E9` - Complementary secondary accent
+- **Brand**: `#475569` - Slate 600 (muted blue-gray)
+- **Brand Light**: `#64748b` - Slate 500 (softer variant)
+- **Brand Dark**: `#334155` - Slate 700 (deeper variant)
 
-### Navy Variants
-- **Base**: `#0A1628` - Main background
-- **Light**: `#0F2440` - Cards and sections
-- **Dark**: `#050C18` - Depth and contrast
+### Accent Colors
+- **Accent**: `#0d9488` - Teal 700 (subtle highlight)
+- **Accent Light**: `#14b8a6` - Teal 600
+- **Accent Dark**: `#0f766e` - Teal 800
+
+### Background Colors
+- **Dark Base**: `#1e293b` - Slate 800 (deep gray, not harsh black)
+- **Dark Light**: `#334155` - Slate 700
+- **Dark Lighter**: `#475569` - Slate 600
 
 ### Text Colors
-- **Primary**: `#F0F9FF` - Crisp white-blue for readability
-- **Secondary**: `#94A3B8` - Soft slate for supporting text
+- **Primary**: `#f1f5f9` - Slate 100 (light text on dark)
+- **Secondary**: `#94a3b8` - Slate 400 (supporting text)
+- **Muted**: `#64748b` - Slate 500
 
 ---
 
 ## Key Design Features
 
-### 1. Neon Glow Effects
-- Cards feature subtle cyan glows that intensify on hover
-- Buttons emit a futuristic neon aura when interacted with
-- Text elements can use neon glow for emphasis
+### 1. Subtle & Professional Color Scheme
+- Muted blue-gray tones instead of vibrant indigo
+- Soft teal accents for highlights
+- No harsh black - uses deep grays for comfortable viewing
 
-### 2. Futuristic Card Design
+### 2. Minimal Animation
+- Only subtle entrance animations
+- Reduced glow effects
+- Smooth, professional transitions
+
+### 3. Clean Card Design
 ```css
 .swiss-card {
-  background: var(--navy-light);
-  border: 1px solid rgba(0, 255, 255, 0.3);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: 0;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .swiss-card:hover {
-  border-color: var(--brand);
-  box-shadow: 0 0 40px rgba(0, 255, 255, 0.4), 
-              0 0 80px rgba(0, 255, 255, 0.2);
-  transform: translateY(-4px);
+  transform: translateY(-2px);
 }
 ```
-
-### 3. Animated Elements
-- **Neon Pulse**: Breathing animation for key CTAs
-- **Smooth Transitions**: 300ms cubic-bezier for fluid interactions
-- **Hover Lifts**: Subtle elevation changes with enhanced glows
 
 ### 4. Typography
-- Uppercase styling for headlines (futuristic feel)
-- Increased letter-spacing for digital aesthetic
-- Bold weights (700-800) for strong visual hierarchy
+- Reduced font sizes throughout (text-5xl → text-xl/text-2xl for headings)
+- Better line heights for readability
+- Professional font weights
+
+### 5. Mobile Responsiveness
+- Responsive navigation with hamburger menu on mobile
+- Flexible grid layouts (`grid-cols-1 lg:grid-cols-2`, `sm:grid-cols-2 lg:grid-cols-4`)
+- Touch-friendly buttons and form elements
+- Mobile-first padding (`px-4` containers)
+- Viewport meta tag: `width=device-width, initial-scale=1.0`
 
 ---
 
-## New CSS Utilities
+## WCAG Compliance
 
-### Neon Effects
-- `.neon-border` - Glowing cyan border
-- `.neon-text-glow` - Triple-layer text shadow
-- `.neon-pulse` - Animated pulsing glow
-
-### Enhanced Interactions
-- `.glow-on-hover` - Now includes text-shadow and scale effects
-- `.gradient-text` - Neon cyan with multi-layer glow
-- `.gradient-bg` - Subtle navy gradient with cyan border
-
----
-
-## Tailwind Config Extensions
-
-### New Color Namespaces
-```javascript
-colors: {
-  brand: { /* Neon cyan variants */ },
-  accent: { /* Electric blue variants */ },
-  navy: {
-    base: '#0A1628',
-    light: '#0F2440',
-    dark: '#050C18'
-  }
-}
-```
-
-### Usage Examples
-```jsx
-// Background colors
-<div className="bg-navy-base">...</div>
-<div className="bg-navy-light">...</div>
-
-// Text colors
-<h1 className="text-brand">Neon Cyan</h1>
-<p className="text-accent">Electric Blue</p>
-
-// Effects
-<button className="glow-on-hover neon-pulse">CTA</button>
-<div className="swiss-card neon-border">Card</div>
-<h2 className="gradient-text neon-text-glow">Title</h2>
-```
-
----
-
-## Accessibility Maintained
-
-✅ **Contrast Ratios**: All text meets WCAG AA standards on dark backgrounds  
+✅ **Contrast Ratios**: All text meets WCAG AA standards  
 ✅ **Reduced Motion**: Respects `prefers-reduced-motion` preference  
 ✅ **Focus States**: Clear focus indicators preserved  
 ✅ **Screen Readers**: All semantic HTML maintained  
 
 ---
 
-## Recruiter Psychology
-
-This theme leverages color psychology to position you as:
-
-1. **Cutting-Edge**: Neon cyan signals innovation and future-tech
-2. **Professional**: Dark navy provides stability and trustworthiness
-3. **ML-Focused**: Cyberpunk aesthetic aligns with AI/ML industry trends
-4. **Detail-Oriented**: Polished micro-interactions show craftsmanship
-
----
-
-## Performance Impact
-
-- **CSS Size**: +2KB (minimal impact)
-- **No New Dependencies**: Pure CSS/Tailwind
-- **GPU-Accelerated**: Transform and opacity animations only
-- **Lazy-Loaded**: No blocking resources added
-
----
-
 ## Before vs After
 
-| Aspect | Before (Swiss Minimal) | After (Futuristic ML) |
-|--------|----------------------|---------------------|
-| Base Color | Off-white (#F4F4F0) | Dark Navy (#0A1628) |
-| Accent | Indigo (#4F46E5) | Neon Cyan (#00FFFF) |
-| Card Style | Solid borders, hard shadows | Glowing borders, soft glows |
-| Typography | Tight spacing | Expanded, uppercase |
-| Animations | Subtle lifts | Neon pulses, glows |
-| Vibe | Clean corporate | Cutting-edge tech |
-
----
-
-## Next Steps
-
-1. **Preview locally**: `npm run dev` to see the transformation
-2. **Test on devices**: Verify neon effects on mobile/tablet
-3. **Consider content updates**: Ensure images/icons complement the dark theme
-4. **Optional**: Add particle effects or animated backgrounds for extra flair
+| Aspect | Before | After |
+|--------|--------|-------|
+| Base Color | Near black (#0F0F0F) | Deep gray (#1e293b) |
+| Brand | Indigo (#4F46E5) | Blue-gray (#475569) |
+| Accent | Vibrant cyan | Muted teal |
+| Animations | Glowing pulses | Subtle fades |
+| Vibe | Futuristic tech | Professional calm |
+| Font Sizes | Large (text-5xl+) | Smaller (text-xl/text-2xl) |
 
 ---
 
 ## Files Modified
 
-- `src/index.css` - Complete theme overhaul
-- `src/tailwind.config.js` - Updated color palette and utilities
+- `src/index.css` - Simplified theme with calm colors
+- `src/config.js` - Updated theme configuration and removed PerformanceAnalytics
+- `tailwind.config.js` - Updated color palette
+- `src/App.jsx` - Removed PerformanceAnalytics lazy load
+- `src/components/Header.jsx` - Mobile nav, smaller fonts
+- `src/components/Hero.jsx` - Reduced headline fonts, calm colors
+- `src/components/About.jsx` - Smaller fonts, calm theme
+- `src/components/Skills.jsx` - Smaller fonts, calm theme
+- `src/components/Projects.jsx` - Smaller fonts, calm theme
+- `src/components/Coursework.jsx` - Smaller fonts
+- `src/components/Blog.jsx` - Smaller fonts, calm theme
+- `src/components/Contact.jsx` - Smaller fonts, calm theme
+- `src/components/Footer.jsx` - Smaller fonts, calm colors
+- `src/components/Skeleton.jsx` - Updated skeleton styles
+- `public/sitemap.xml` - Removed #performance URL
+- `docs/sitemap.xml` - Removed #performance URL
 
 ---
 
-*Theme designed to maximize impact for entry-level ML/AI engineering roles. The futuristic aesthetic signals technical sophistication while maintaining professional credibility.*
+*Theme designed for professional portfolios that prioritize readability and sophisticated minimalism.*

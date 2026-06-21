@@ -23,24 +23,24 @@ module.exports = {
       },
       colors: {
         brand: {
-          light: 'var(--brand-light, #6366F1)',
-          DEFAULT: 'var(--brand, #4F46E5)',
-          dark: 'var(--brand-dark, #4338CA)',
+          light: 'var(--brand-light, #64748b)',
+          DEFAULT: 'var(--brand, #475569)',
+          dark: 'var(--brand-dark, #334155)',
         },
         accent: {
-          light: 'var(--accent-light, #22D3EE)',
-          DEFAULT: 'var(--accent, #06B6D4)',
-          dark: 'var(--accent-dark, #0891B2)',
+          light: 'var(--accent-light, #14b8a6)',
+          DEFAULT: 'var(--accent, #0d9488)',
+          dark: 'var(--accent-dark, #0f766e)',
         },
         secondary: {
-          light: 'var(--accent-tertiary-light, #F472B6)',
-          DEFAULT: 'var(--accent-tertiary, #EC4899)',
-          dark: 'var(--accent-tertiary-dark, #BE185D)',
+          light: 'var(--accent-tertiary-light, #94a3b8)',
+          DEFAULT: 'var(--accent-tertiary, #64748b)',
+          dark: 'var(--accent-tertiary-dark, #475569)',
         },
         dark: {
-          base: 'var(--dark-base, #0F0F0F)',
-          light: 'var(--dark-light, #1A1A1A)',
-          lighter: 'var(--dark-lighter, #2A2A2A)',
+          base: 'var(--dark-base, #1e293b)',
+          light: 'var(--dark-light, #334155)',
+          lighter: 'var(--dark-lighter, #475569)',
         },
       },
       animation: {

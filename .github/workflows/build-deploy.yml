@@ -96,7 +96,7 @@ jobs:
       
       - name: Deploy to docs folder
         run: |
-          rm -rf docs/assets docs/images docs/index.html docs/og-image.png docs/profile.jpg 2>/dev/null || true
+          rm -rf docs/assets docs/images 2>/dev/null || true
           cp -r dist/* docs/
       
       - name: Configure git

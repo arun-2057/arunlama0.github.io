@@ -13,15 +13,14 @@ const Skills = lazy(() => import('./components/Skills'));
 const Coursework = lazy(() => import('./components/Coursework'));
 const Projects = lazy(() => import('./components/Projects'));
 const Blog = lazy(() => import('./components/Blog'));
-const PerformanceAnalytics = lazy(() => import('./components/PerformanceAnalytics'));
 const Contact = lazy(() => import('./components/Contact'));
 
 // Loading fallback components
 function SkillsLoadingFallback() {
 	return (
-		<section className="py-16 bg-dark-base dark:bg-dark-base">
+		<section className="py-16 bg-white dark:bg-slate-800">
 			<div className="max-w-5xl mx-auto px-4">
-				<div className="h-8 bg-gray-700 rounded w-24 mb-8 animate-pulse"></div>
+				<div className="h-5 bg-slate-200 dark:bg-slate-700 rounded w-16 mb-5 animate-pulse"></div>
 				<SkeletonGrid count={4} />
 			</div>
 		</section>
@@ -30,9 +29,9 @@ function SkillsLoadingFallback() {
 
 function ProjectsLoadingFallback() {
 	return (
-		<section className="py-16 bg-dark-base dark:bg-dark-base">
-			<div className="max-w-6xl mx-auto px-4">
-				<div className="h-8 bg-gray-700 rounded w-32 mb-8 animate-pulse"></div>
+		<section className="py-16 bg-white dark:bg-slate-800">
+			<div className="max-w-5xl mx-auto px-4">
+				<div className="h-5 bg-slate-200 dark:bg-slate-700 rounded w-20 mb-5 animate-pulse"></div>
 				<SkeletonProjectGrid count={4} />
 			</div>
 		</section>
@@ -41,8 +40,8 @@ function ProjectsLoadingFallback() {
 
 function DefaultLoadingFallback() {
 	return (
-		<div className="flex items-center justify-center min-h-[200px]">
-			<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand"></div>
+		<div className="flex items-center justify-center min-h-[150px]">
+			<div className="animate-spin rounded-full h-8 w-8 border-b-2 border-slate-600"></div>
 		</div>
 	);
 }
@@ -54,14 +53,14 @@ export default function App() {
 			<Breadcrumb />
 			<a
 				href="#main-content"
-				className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-white dark:focus:bg-gray-900 focus:px-3 focus:py-2 focus:rounded"
+				className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-white dark:focus:bg-slate-800 focus:px-2 focus:py-1 focus:rounded text-xs"
 			>
 				Skip to content
 			</a>
 
 			<Header />
 
-			<main id="main-content" className="mt-6 md:mt-20">
+			<main id="main-content" className="mt-6">
 				<Suspense fallback={<DefaultLoadingFallback />}>
 					<Hero />
 				</Suspense>
@@ -79,9 +78,6 @@ export default function App() {
 				</Suspense>
 				<Suspense fallback={<DefaultLoadingFallback />}>
 					<Blog />
-				</Suspense>
-				<Suspense fallback={<DefaultLoadingFallback />}>
-					<PerformanceAnalytics />
 				</Suspense>
 				<Suspense fallback={<DefaultLoadingFallback />}>
 					<Contact />

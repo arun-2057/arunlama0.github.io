@@ -39,7 +39,7 @@ export const resumeData = {
       ],
     },
   ],
-
+  
   // Education
   education: [
     {
@@ -48,7 +48,7 @@ export const resumeData = {
       description: 'Specialization in Machine Learning and Data Science',
     },
   ],
-
+  
   // Skills
   skills: {
     'Core Languages': ['Python', 'SQL', 'JavaScript', 'R'],
@@ -56,13 +56,13 @@ export const resumeData = {
     'Data Visualization': ['Tableau', 'Matplotlib', 'Seaborn', 'Power BI'],
     'Tools & Platforms': ['Git', 'Docker', 'Jupyter', 'PostgreSQL', 'Airflow'],
   },
-
+  
   // Certifications
   certifications: [
     { name: 'Machine Learning Specialization', issuer: 'Coursera' },
     { name: 'Python for Data Science', issuer: 'DataCamp' },
   ],
-
+  
   // Social Links
   socialLinks: [
     { platform: 'GitHub', url: 'https://github.com/arun-2057' },
@@ -92,8 +92,8 @@ export async function downloadResumePDF() {
 /**
  * Generate resume as plain text
  */
-function generateResumeText() {
-  const { resumeData: data } = require('./resume');
+function generateResumeText(resume) {
+  const data = resume || resumeData;
   
   let text = `${data.name}\n${data.title}\n\n`;
   text += `${data.email} | ${data.location}\n${data.profileUrl}\n\n`;
@@ -135,8 +135,7 @@ export function openCalendly() {
  * Send email with pre-filled subject
  */
 export function sendEmail(subject = 'Let\'s Connect!') {
-  const { resumeData: data } = require('./resume');
-  const mailtoLink = `mailto:${data.email}?subject=${encodeURIComponent(subject)}`;
+  const mailtoLink = `mailto:${resumeData.email}?subject=${encodeURIComponent(subject)}`;
   window.location.href = mailtoLink;
 }
 

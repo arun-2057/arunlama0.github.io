@@ -25,7 +25,7 @@ export const config = {
     linkedin: 'https://www.linkedin.com/in/lama-arun/',
     kaggle: 'https://www.kaggle.com/zorornoa',
   },
-
+  
   // Navigation Links
   navigation: [
     { href: '#about', label: 'About' },
@@ -33,7 +33,6 @@ export const config = {
     { href: '#coursework', label: 'Coursework' },
     { href: '#projects', label: 'Projects' },
     { href: '#blog', label: 'Articles' },
-    { href: '#performance', label: 'Performance' },
     { href: '#contact', label: 'Contact', hideDot: true },
   ],
 
@@ -128,31 +127,31 @@ export const images = {
   profileWebp400: '/profile_optimized-400.webp',
 };
 
-// Color Theme Configuration
+// Color Theme Configuration - Calm & Modern
 export const theme = {
   colors: {
-    // Primary gradient colors (modern purple-blue-teal)
-    primary: '#6366f1',      // Indigo
-    primaryDark: '#4f46e5',  // Darker indigo
-    primaryLight: '#818cf8', // Lighter indigo
+    // Primary gradient colors (calm blue-gray)
+    primary: '#475569',      // Slate 600 - muted blue-gray
+    primaryDark: '#334155',  // Slate 700 - deeper blue-gray
+    primaryLight: '#64748b', // Slate 500 - softer blue-gray
     
-    // Secondary accent (teal)
-    secondary: '#14b8a6',    // Teal
-    secondaryDark: '#0d9488',
-    secondaryLight: '#2dd4bf',
+    // Secondary accent (subtle teal for highlights)
+    secondary: '#0d9488',    // Teal 700 - muted teal
+    secondaryDark: '#0f766e',
+    secondaryLight: '#14b8a6',
     
     // Gradient combinations
-    gradientFrom: '#6366f1',  // Indigo
-    gradientVia: '#8b5cf6',   // Violet
-    gradientTo: '#06b6d4',    // Cyan
+    gradientFrom: '#64748b',  // Slate 500
+    gradientVia: '#475569', // Slate 600
+    gradientTo: '#334155',   // Slate 700
     
     // Neutral colors
     background: {
-      light: '#f8fafc',       // Slate 50
-      dark: '#0f172a',        // Slate 900
+      light: '#f8fafc',      // Slate 50 - very light gray
+      dark: '#1e293b',       // Slate 800 - deep gray (not black)
       card: {
         light: '#ffffff',
-        dark: '#1e293b',      // Slate 800
+        dark: '#334155',      // Slate 700 - card background
       }
     },
     text: {
@@ -161,7 +160,7 @@ export const theme = {
         dark: '#f1f5f9',      // Slate 100
       },
       secondary: {
-        light: '#475569',     // Slate 600
+        light: '#64748b',     // Slate 500
         dark: '#94a3b8',      // Slate 400
       }
     }
